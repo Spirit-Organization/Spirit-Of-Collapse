@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,10 +18,10 @@ TagManager:
   - 
   - Platform
   - Wall
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerInvincible
+  - Enemy
+  - Projectile
   - 
   - 
   - 
@@ -42,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2860239059
     locked: 0
