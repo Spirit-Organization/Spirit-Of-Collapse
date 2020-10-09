@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pill Bug AI
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"graph":{"title":null,"summary":null,"pan":{"x":416.0,"y":-37.0},"zoom":1.0,"elements":[{"nest":{"source":"Macro","macro":0,"embed":null},"isStart":true,"position":{"x":331.0,"y":-59.0},"width":170.0,"guid":"feb02205-5898-48ed-b4d5-ff0d53365484","$type":"Bolt.SuperState"}],"$version":"A"}}'
+    _json: '{"graph":{"title":null,"summary":null,"pan":{"x":416.2694,"y":-29.72806},"zoom":1.0,"elements":[{"nest":{"source":"Macro","macro":0,"embed":null},"isStart":true,"position":{"x":331.0,"y":-59.0},"width":170.0,"guid":"feb02205-5898-48ed-b4d5-ff0d53365484","$type":"Bolt.SuperState"}],"$version":"A"}}'
     _objectReferences:
     - {fileID: 11400000, guid: d2bb5ab22258cb3409e08bc43137979f, type: 2}
