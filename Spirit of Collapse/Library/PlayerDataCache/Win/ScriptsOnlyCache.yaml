@@ -17,8 +17,6 @@ ScriptsOnlyBuild:
     - Ludiq.GraphWindow
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
-    Unity.2D.SpriteShape.Editor.dll:
-    - UnityEditor.U2D.SpriteShapeEditorAnalytics
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -27,16 +25,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    Unity.Timeline.Editor.dll:
-    - UnityEditor.Timeline.SequenceHierarchy
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationBlendTree.Node
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -64,29 +52,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11612}
+      Script: {instanceID: 11324}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11624}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11984}
     - Class: 114
-      Script: {instanceID: 12368}
+      Script: {instanceID: 12378}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 13078}
+      Script: {instanceID: 13088}
     - Class: 114
-      Script: {instanceID: 13872}
+      Script: {instanceID: 13884}
     - Class: 114
-      Script: {instanceID: 13900}
+      Script: {instanceID: 13912}
     - Class: 114
-      Script: {instanceID: 14494}
+      Script: {instanceID: 14506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -135,19 +123,21 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 11976}
+      Script: {instanceID: 11984}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 11986}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 13900}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 13902}
+      Script: {instanceID: 13912}
+    - Class: 114
+      Script: {instanceID: 13914}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -157,6 +147,20 @@ ScriptsOnlyBuild:
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 253
+      Script: {instanceID: 0}
+    - Class: 19719996
+      Script: {instanceID: 0}
+    - Class: 156049354
+      Script: {instanceID: 0}
+    - Class: 483693784
+      Script: {instanceID: 0}
+    - Class: 1839735485
       Script: {instanceID: 0}
     Assets/Scenes/Menu.unity:
     - Class: 1
@@ -176,27 +180,27 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11612}
+      Script: {instanceID: 11324}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11624}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11984}
     - Class: 114
-      Script: {instanceID: 12368}
+      Script: {instanceID: 12378}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 13078}
+      Script: {instanceID: 13088}
     - Class: 114
-      Script: {instanceID: 13872}
+      Script: {instanceID: 13884}
     - Class: 114
-      Script: {instanceID: 14494}
+      Script: {instanceID: 14506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -241,17 +245,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11984}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 13900}
+      Script: {instanceID: 13912}
     - Class: 114
-      Script: {instanceID: 13902}
+      Script: {instanceID: 13914}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -294,17 +298,70 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11984}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 13900}
+      Script: {instanceID: 13912}
     - Class: 114
-      Script: {instanceID: 13902}
+      Script: {instanceID: 13914}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    Assets/Scenes/Scene4.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 62
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 111
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11980}
+    - Class: 114
+      Script: {instanceID: 11984}
+    - Class: 114
+      Script: {instanceID: 12676}
+    - Class: 114
+      Script: {instanceID: 12678}
+    - Class: 114
+      Script: {instanceID: 13912}
+    - Class: 114
+      Script: {instanceID: 13914}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -316,6 +373,12 @@ ScriptsOnlyBuild:
     - Class: 213
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -400,12 +463,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -540,7 +597,7 @@ ScriptsOnlyBuild:
     className: CinemachinePixelPerfect
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: ef5c43f921427d03730f6ea4c848f07d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RectMask2D
@@ -941,4 +998,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/HUD.unity
   - Assets/Scenes/Scene3.unity
   - Assets/Scenes/Menu.unity
+  - Assets/Scenes/Scene4.unity
   playerPath: C:/Users/iance/Spirit of Collapse/Spirit of Collapse.exe
