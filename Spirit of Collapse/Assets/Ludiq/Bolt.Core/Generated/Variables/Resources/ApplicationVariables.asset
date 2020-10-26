@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ApplicationVariables
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"Player","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart9","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart8","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart7","value":{"$content":3,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart6","value":{"$content":4,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Player","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart9","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart8","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart7","value":{"$content":3,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Heart6","value":{"$content":4,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"CameraShake","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 4792318659906898109, guid: 45bf069d5d44aaa4da4a910d9d1a137f, type: 3}
     - {fileID: 5794180438927747725, guid: 9345cdcc097e9be4fbffa8fe917f3d81, type: 3}
