@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6215108344547979602}
   - component: {fileID: 561211338}
   - component: {fileID: 1432604410}
+  - component: {fileID: 5685639937243251222}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"Jump","value":{"$content":10.0,"$type":"System.Single"},"$version":"A"},{"name":"WallLaunchMultiplier","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"DoubleJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"JumpAmount","value":{"$content":0,"$type":"System.Int32"},"$version":"A"},{"name":"HasKey","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"WallJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"Jump","value":{"$content":6.0,"$type":"System.Single"},"$version":"A"},{"name":"WallLaunchMultiplier","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"DoubleJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"JumpAmount","value":{"$content":0,"$type":"System.Int32"},"$version":"A"},{"name":"HasKey","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"WallJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &-8954991344415342366
 MonoBehaviour:
@@ -203,3 +204,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.40487868, y: 0.40498352}
   m_Size: {x: 4.0313272, y: 10.980033}
   m_Direction: 0
+--- !u!114 &5685639937243251222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792318659906898109}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa05213a8eaa97647adecc2c904ebf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
