@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 4792318659906897985}
   - component: {fileID: 2358610896931774419}
   - component: {fileID: 4792318659959170759}
-  - component: {fileID: 8708726017726203844}
   - component: {fileID: 4792318659959170761}
   - component: {fileID: 4792318659959170760}
   - component: {fileID: -8954991344415342366}
   - component: {fileID: -6215108344547979602}
+  - component: {fileID: 561211338}
+  - component: {fileID: 1432604410}
+  - component: {fileID: 5685639937243251222}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -30,13 +32,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4792318659906898109}
-  m_LocalRotation: {x: -0, y: -0, z: 0.47412795, w: 0.88045603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 56.605003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2358610896931774419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 60e564a123f2a7a46b707176476229bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0cd8e20330ff80847a09ef3cc984446e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,37 +110,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &8708726017726203844
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4792318659906898109}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.074816346, y: 0.5153545}
-      - {x: -0.38079706, y: 0.21695991}
-      - {x: -0.3837814, y: -0.2939267}
-      - {x: 0.1616189, y: -0.5002016}
-      - {x: 0.62041175, y: -0.19882599}
-      - {x: 0.47552824, y: 0.15450859}
 --- !u!114 &4792318659959170761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"Jump","value":{"$content":6.0,"$type":"System.Single"},"$version":"A"},{"name":"WallLaunchMultiplier","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"DoubleJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"JumpAmount","value":{"$content":0,"$type":"System.Int32"},"$version":"A"},{"name":"HasKey","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"Jump","value":{"$content":6.0,"$type":"System.Single"},"$version":"A"},{"name":"WallLaunchMultiplier","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"DoubleJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"JumpAmount","value":{"$content":0,"$type":"System.Int32"},"$version":"A"},{"name":"HasKey","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"MaxHealth","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"WallJump","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &-8954991344415342366
 MonoBehaviour:
@@ -196,5 +167,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 305935433, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &561211338
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792318659906898109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f245c943872ca74f9514b1074822d45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1432604410
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792318659906898109}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.40487868, y: 0.40498352}
+  m_Size: {x: 4.0313272, y: 10.980033}
+  m_Direction: 0
+--- !u!114 &5685639937243251222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792318659906898109}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa05213a8eaa97647adecc2c904ebf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
