@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5507066220096367037}
   - component: {fileID: 5507066220096367032}
   - component: {fileID: 5507066220096367035}
+  - component: {fileID: -5248689259782056250}
   m_Layer: 12
   m_Name: BLood Hunter
   m_TagString: Enemy
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5507066220096367010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -57143145, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
   m_Name: 
@@ -173,3 +174,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -4.75}
   m_Size: {x: 7.8907056, y: 30.13569}
   m_Direction: 0
+--- !u!114 &-5248689259782056250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507066220096367010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5209917905abb547be5adf1195d2cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyDamagePrefab: {fileID: 8201768913416742896, guid: 82e0ea2980423a941a1fe3eef46b9067,
+    type: 3}
