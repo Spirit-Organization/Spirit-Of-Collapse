@@ -46,7 +46,6 @@ public class BloodHunterAI : MonoBehaviour
         if (Dead == false) //checking if dead
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 3.0f, 1 << LayerMask.NameToLayer("Player")); //checks for player
-            Debug.DrawRay(transform.position, direction);
             if (hit.collider != null)
             {
                 if (hit.collider.gameObject.CompareTag("Player")) //if player found start attacking
@@ -56,7 +55,7 @@ public class BloodHunterAI : MonoBehaviour
                     if (DamageDelay <= 0.0f)
                     {
                         StartCoroutine(Attack());
-                        DamageDelay = 0.5f;
+                        DamageDelay = 0.6f;
                     }
                 }
             }

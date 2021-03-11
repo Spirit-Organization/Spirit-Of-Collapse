@@ -8,8 +8,6 @@ TagManager:
   - Wall
   - Enemy
   - Projectile
-  - DeathBlock
-  - Water
   layers:
   - Default
   - TransparentFX
