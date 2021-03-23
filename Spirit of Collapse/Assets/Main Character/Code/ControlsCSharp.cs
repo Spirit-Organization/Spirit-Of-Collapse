@@ -6,6 +6,7 @@ public class ControlsCSharp : MonoBehaviour
 {
 
     public GameObject Player;
+    public GameObject WeaponPrefab;
     public int Health;
     public int MaxHealth;
     public int Speed;
@@ -28,6 +29,7 @@ public class ControlsCSharp : MonoBehaviour
     private bool attacking = false;
     public int DamageIncoming;
     private float DamagesDelay = 1;
+    private Vector3 WeaponPosition;
 
     void Start()
     {
@@ -146,20 +148,19 @@ public class ControlsCSharp : MonoBehaviour
             else
             { animator.SetFloat("Speed", 0.1f); }
         }
-        JumpStart(); 
+        JumpStart();
         AttackStart();
 
-        if (DamageIncoming > 0)
-        {
-            DamagesDelay -= Time.deltaTime;
+        DamagesDelay -= Time.deltaTime;
+        Debug.Log(DamagesDelay);
 
-            if (DamagesDelay <= 0.0f)
-            {
-                DamagesDelay = 1.0f;
-                Health -= DamageIncoming;
-                DamageIncoming = 0;
-            }
+        if (DamagesDelay <= 0.0f && DamageIncoming > 0)
+        {
+            DamagesDelay = 1.0f;
+            Health -= DamageIncoming;
+            DamageIncoming = 0;
         }
+        
     }
 
 
@@ -213,21 +214,34 @@ public class ControlsCSharp : MonoBehaviour
             Attack = false; //resets button for attacking manually just in case
             if (attacking == true) //checks if player is already attacking
             {
-                Attack2 = true;
+                //Attack2 = true;
 
             }
             else
             {
                 attacking = true;
                 animator.SetBool("Attack1", true); //sets attack animation 1 to true
-                animator.SetBool("Attack2", false); //sets attack animation 2 to false
+                //animator.SetBool("Attack2", false); //sets attack animation 2 to false
                 StartCoroutine(Attack1Done());
             }
         }
     }
     IEnumerator Attack1Done()
     {
-        yield return new WaitForSeconds(0.65f);
+        yield return new WaitForSeconds(0.2f);
+        if (transform.localScale.x > 0)
+        {
+            WeaponPosition = transform.position + new Vector3(-1.0f, 0f, 0.0f);
+        }
+        else
+        {
+            WeaponPosition = transform.position + new Vector3(1.0f, 0f, 0.0f);
+        }
+
+        GameObject DamageBox = Instantiate(WeaponPrefab,WeaponPosition, Quaternion.identity); //clones damage box
+        Destroy(DamageBox, 1f);
+
+        yield return new WaitForSeconds(0.2f);
 
         if (Attack2 == true) //checks if there is a 2nd attack
         {
@@ -235,7 +249,7 @@ public class ControlsCSharp : MonoBehaviour
             Attack2 = false; //resets for next attack
             animator.SetBool("Attack1", false); // sets attack animation 1 to false
             attacking = false; //resets attacking to false
-            StartCoroutine(Attack2Done()); //ends 2nd attack animation
+            //StartCoroutine(Attack2Done()); //ends 2nd attack animation
         }
         else //stops attack 1 animation if no 2nd attack
         {

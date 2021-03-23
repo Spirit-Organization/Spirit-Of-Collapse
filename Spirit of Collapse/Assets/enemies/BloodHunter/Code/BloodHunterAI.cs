@@ -17,13 +17,11 @@ public class BloodHunterAI : MonoBehaviour
     private Transform HasPlayerTag;
     float AttackDelay = 7.0f;
     float ChangeDirectionDelay = 3.0f;
-    float DamageDelay = 0.5f;
+    float DamageDelay = 2f;
     public GameObject EnemyDamagePrefab;
     Vector3 DamagePosition = new Vector3(0f, 0f, 0f);
     private Animator animator;
     private GameObject DamagedOBJ;
-
-    int DamageAmount = 1;
 
 
     private void Start()
@@ -45,17 +43,20 @@ public class BloodHunterAI : MonoBehaviour
 
         if (Dead == false) //checking if dead
         {
+            DamageDelay -= Time.deltaTime;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 3.0f, 1 << LayerMask.NameToLayer("Player")); //checks for player
             if (hit.collider != null)
             {
                 if (hit.collider.gameObject.CompareTag("Player")) //if player found start attacking
                 {
                     DamageDelay -= Time.deltaTime;
-
                     if (DamageDelay <= 0.0f)
                     {
+                        DamageDelay = 3.5f;
                         StartCoroutine(Attack());
-                        DamageDelay = 0.6f;
+
+                        animator = GetComponent<Animator>();
+                        animator.SetBool("Attack", true);
                     }
                 }
             }
@@ -65,7 +66,7 @@ public class BloodHunterAI : MonoBehaviour
 
                 if (ChangeDirectionDelay <= 0.0f)
                 {
-                    ChangeDirectionDelay = 3.0f;
+                    ChangeDirectionDelay = 2.0f;
                     transform.localScale = Vector3.Scale(new Vector3(-1f, 1f, 1f), transform.localScale);
                 }
             }
@@ -77,20 +78,9 @@ public class BloodHunterAI : MonoBehaviour
     }
     IEnumerator Attack() //starts attacking
     {
-        animator = GetComponent<Animator>();
-        animator.SetBool("Attack", true);
 
+        yield return new WaitForSeconds(0.5f);
 
-
-
-        yield return new WaitForSeconds(0.7f);
-
-        DamageOBJ();
-
-    }
-
-    void DamageOBJ() //executes attack and resets it
-    {
         if (transform.localScale.x > 0)
         {
             DamagePosition = transform.position + new Vector3(2.0f, -1f, 0.0f);
@@ -99,16 +89,22 @@ public class BloodHunterAI : MonoBehaviour
         {
             DamagePosition = transform.position + new Vector3(-2.0f, -1f, 0.0f);
         }
+
         GameObject DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
-        Destroy(DamageBox, 0.4f); //destroy damage box
+        Destroy(DamageBox, 1f);
+
+        yield return new WaitForSeconds(0.5f);
+
         animator.SetBool("Attack", false);
+
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<ControlsCSharp>().DamageIncoming -= 1;
+            col.gameObject.GetComponent<ControlsCSharp>().DamageIncoming = 1;
         }
         if (col.gameObject.CompareTag("DeathBlock") || col.gameObject.CompareTag("Projectile"))
         {

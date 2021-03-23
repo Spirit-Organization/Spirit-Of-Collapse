@@ -1236,6 +1236,12 @@ PrefabInstance:
       propertyPath: DoubleJump
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5685639937243251222, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
+        type: 3}
+      propertyPath: WeaponPrefab
+      value: 
+      objectReference: {fileID: 4053881745221094284, guid: 478f6c351c28fe04789ecd093902fae0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45bf069d5d44aaa4da4a910d9d1a137f, type: 3}
 --- !u!1 &913877324
