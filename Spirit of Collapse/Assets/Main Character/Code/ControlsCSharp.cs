@@ -22,11 +22,12 @@ public class ControlsCSharp : MonoBehaviour
     private float Horizontal;
     private bool Jump;
     private float TrueJump;
-    [SerializeField]
     private int JumpAmount = 0;
     private bool Attack;
     private bool Attack2 = false;
     private bool attacking = false;
+    public int DamageIncoming;
+    private float DamagesDelay = 1;
 
     void Start()
     {
@@ -147,6 +148,18 @@ public class ControlsCSharp : MonoBehaviour
         }
         JumpStart(); 
         AttackStart();
+
+        if (DamageIncoming > 0)
+        {
+            DamagesDelay -= Time.deltaTime;
+
+            if (DamagesDelay <= 0.0f)
+            {
+                DamagesDelay = 1.0f;
+                Health -= DamageIncoming;
+                DamageIncoming = 0;
+            }
+        }
     }
 
 
@@ -235,7 +248,5 @@ public class ControlsCSharp : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         animator.SetBool("Attack2", false);// sets attack animation 2 to false
     }
-
-
 
 }
