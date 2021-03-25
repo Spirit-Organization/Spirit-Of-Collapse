@@ -217,10 +217,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 4792318659906898109}
+  WeaponPrefab: {fileID: 4053881745221094284, guid: 478f6c351c28fe04789ecd093902fae0,
+    type: 3}
   Health: 5
   MaxHealth: 5
-  Speed: 8
+  Speed: 22
   JumpPower: 17
-  DoubleJump: 1
+  DoubleJump: 0
   WallJump: 0
-  JumpAmount: 0
+  DamageIncoming: 0

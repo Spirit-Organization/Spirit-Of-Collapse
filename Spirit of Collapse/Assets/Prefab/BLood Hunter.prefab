@@ -187,3 +187,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyDamagePrefab: {fileID: 8201768913416742896, guid: 82e0ea2980423a941a1fe3eef46b9067,
     type: 3}
+  DeathPrefab: {fileID: 8602045508715404546, guid: aa519fd21dc16e84b921d2e80212cc28,
+    type: 3}

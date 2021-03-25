@@ -22,11 +22,13 @@ public class BloodHunterAI : MonoBehaviour
     Vector3 DamagePosition = new Vector3(0f, 0f, 0f);
     private Animator animator;
     private GameObject DamagedOBJ;
-
+    public GameObject DeathPrefab;
+    private GameObject self;
+    private GameObject DamageBox;
 
     private void Start()
     {
-      
+        self = this.gameObject;
     }
 
 
@@ -40,7 +42,7 @@ public class BloodHunterAI : MonoBehaviour
         {
             direction = new Vector2(-1f, 0f);
         }
-
+        animator = GetComponent<Animator>();
         if (Dead == false) //checking if dead
         {
             DamageDelay -= Time.deltaTime;
@@ -74,6 +76,7 @@ public class BloodHunterAI : MonoBehaviour
         else
         {
             StartCoroutine(Death());
+            if (animator.GetBool("Attack")) { animator.SetBool("Attack", false); }
         }
     }
     IEnumerator Attack() //starts attacking
@@ -90,7 +93,7 @@ public class BloodHunterAI : MonoBehaviour
             DamagePosition = transform.position + new Vector3(-2.0f, -1f, 0.0f);
         }
 
-        GameObject DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
+        DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
         Destroy(DamageBox, 1f);
 
         yield return new WaitForSeconds(0.5f);
@@ -117,8 +120,12 @@ public class BloodHunterAI : MonoBehaviour
     IEnumerator Death()
     {
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 90f));
+        gameObject.layer = LayerMask.GetMask("Default");
+        if (DamageBox != null) { Destroy(DamageBox,0f); }
         yield return new WaitForSeconds(3);
+        Destroy(self,0);
+        GameObject Particle = Instantiate(DeathPrefab, transform.position, Quaternion.identity); //clones damage box
+        Destroy(Particle, 10f);
 
-        
     }
 }

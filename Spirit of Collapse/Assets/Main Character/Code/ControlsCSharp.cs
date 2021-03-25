@@ -152,7 +152,6 @@ public class ControlsCSharp : MonoBehaviour
         AttackStart();
 
         DamagesDelay -= Time.deltaTime;
-        Debug.Log(DamagesDelay);
 
         if (DamagesDelay <= 0.0f && DamageIncoming > 0)
         {
@@ -160,7 +159,7 @@ public class ControlsCSharp : MonoBehaviour
             Health -= DamageIncoming;
             DamageIncoming = 0;
         }
-        
+
     }
 
 
@@ -189,7 +188,7 @@ public class ControlsCSharp : MonoBehaviour
 
 
             if (DoubleJump == true) //checks if you can double jump
-            { 
+            {
                 if (JumpAmount == 2) //checks if you have jumped twice, and if so, resets your counter
                 {
                     JumpAmount = 0;
@@ -212,23 +211,17 @@ public class ControlsCSharp : MonoBehaviour
         if (Attack == true) //checks if player is pressing a button for attacking
         {
             Attack = false; //resets button for attacking manually just in case
-            if (attacking == true) //checks if player is already attacking
-            {
-                //Attack2 = true;
 
-            }
-            else
-            {
-                attacking = true;
-                animator.SetBool("Attack1", true); //sets attack animation 1 to true
-                //animator.SetBool("Attack2", false); //sets attack animation 2 to false
-                StartCoroutine(Attack1Done());
-            }
+            attacking = true;
+            animator.SetBool("Attack1", true); //sets attack animation 1 to true
+
+            StartCoroutine(Attack1Done());
+
         }
     }
     IEnumerator Attack1Done()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         if (transform.localScale.x > 0)
         {
             WeaponPosition = transform.position + new Vector3(-1.0f, 0f, 0.0f);
@@ -238,29 +231,13 @@ public class ControlsCSharp : MonoBehaviour
             WeaponPosition = transform.position + new Vector3(1.0f, 0f, 0.0f);
         }
 
-        GameObject DamageBox = Instantiate(WeaponPrefab,WeaponPosition, Quaternion.identity); //clones damage box
-        Destroy(DamageBox, 1f);
+        GameObject DamageBox = Instantiate(WeaponPrefab, WeaponPosition, Quaternion.identity); //clones damage box
+        Destroy(DamageBox, 0.4f);
+
 
         yield return new WaitForSeconds(0.2f);
 
-        if (Attack2 == true) //checks if there is a 2nd attack
-        {
-            animator.SetBool("Attack2", true); //sets attack animation 2 to true
-            Attack2 = false; //resets for next attack
-            animator.SetBool("Attack1", false); // sets attack animation 1 to false
-            attacking = false; //resets attacking to false
-            //StartCoroutine(Attack2Done()); //ends 2nd attack animation
-        }
-        else //stops attack 1 animation if no 2nd attack
-        {
-            animator.SetBool("Attack1", false);
-            attacking = false;
-        }
-    }
-    IEnumerator Attack2Done()
-    {
-        yield return new WaitForSeconds(0.7f);
-        animator.SetBool("Attack2", false);// sets attack animation 2 to false
-    }
-
+        animator.SetBool("Attack1", false);
+        attacking = false;
+    } 
 }
