@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlsCSharp : MonoBehaviour
 {
@@ -45,121 +46,134 @@ public class ControlsCSharp : MonoBehaviour
 
     void Update()
     {
-
-        Jump = Input.GetButtonDown("Jump");
-        Horizontal = Input.GetAxis("Horizontal");
-        Attack = Input.GetButtonDown("Fire1");
-
-        RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -3.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
-        if (Watered.collider != null)
+        if (Health > 0)
         {
-            if (Watered.collider.gameObject.CompareTag("Water"))
+            Jump = Input.GetButtonDown("Jump");
+            Horizontal = Input.GetAxis("Horizontal");
+            Attack = Input.GetButtonDown("Fire1");
+
+                RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -3.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
+            if (Watered.collider != null)
             {
-                TouchingWater = true;
-            }
-            else
-            {
-                TouchingWater = false;
-            }
-
-        }
-
-        if (TouchingWater)
-        {
-            Movement = Horizontal * (Speed / 2) * 10 * Time.deltaTime;
-        } // sets movement for water
-        else
-        {
-            Movement = Horizontal * Speed * 10 * Time.deltaTime;
-
-        }//sets movement
-
-
-        rb.velocity = new Vector2(Movement, rb.velocity.y);//velocity moves object00
-
-        RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
-        if (Grounded.collider != null)// checks for ground
-        {
-
-            JumpPerWall = 0;
-            TouchingGround = true;
-            animator.SetBool("Fall", false);//reverts fall animation
-            animator.SetBool("Jump", false);
-        }
-        else
-        {
-            TouchingGround = false;
-
-            if (rb.velocity.y / Mathf.Abs(rb.velocity.y) == -1 || rb.velocity.y / Mathf.Abs(rb.velocity.y) == 0) //checks for downward velocity
-            {
-                animator.SetBool("Fall", true);//sets fall animation
-                animator.SetBool("Jump", false);//reverts jump animation
-            }
-            else if (rb.velocity.y / Mathf.Abs(rb.velocity.y) == 1) // checks for upward velocity
-            {
-                animator.SetBool("Fall", false);//reverts fall animation
-                animator.SetBool("Jump", true);//sets jump animation
-            }
-
-        }
-
-        if (Movement != 0)
-        {
-            float NormalScale = transform.localScale.x / Mathf.Abs(transform.localScale.x); //flips sprite
-            float NormalMovement = Movement / Mathf.Abs(Movement);
-            if (NormalScale == NormalMovement)
-            {
-                transform.localScale = Vector3.Scale(new Vector3(-1f, 1f, 1f), transform.localScale);
-            }
-            else
-            {
-                transform.localScale = Vector3.Scale(new Vector3(1f, 1f, 1f), transform.localScale);
-            }
-
-            RaycastHit2D Walled = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), LayerMask.GetMask("Wall"));
-            if (Walled.collider != null)//checks if touching wall
-            {
-                if (Walled.collider.gameObject.CompareTag("Wall"))
+                if (Watered.collider.gameObject.CompareTag("Water"))
                 {
-                    TouchingWall = true;
-
+                    TouchingWater = true;
                 }
                 else
                 {
-                    TouchingWall = false;
-                    if (TouchingGround)
-                    {
+                    TouchingWater = false;
+                }
 
-                        AnimationWalk();
+            }
+
+            if (TouchingWater)
+            {
+                Movement = Horizontal * (Speed / 2) * 10 * Time.deltaTime;
+            } // sets movement for water
+            else
+            {
+                Movement = Horizontal * Speed * 10 * Time.deltaTime;
+
+            }//sets movement
+
+            if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
+
+            RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
+            if (Grounded.collider != null)// checks for ground
+            {
+
+                JumpPerWall = 0;
+                TouchingGround = true;
+                animator.SetBool("Fall", false);//reverts fall animation
+                animator.SetBool("Jump", false);
+            }
+            else
+            {
+                TouchingGround = false;
+
+                if (rb.velocity.y / Mathf.Abs(rb.velocity.y) == -1 || rb.velocity.y / Mathf.Abs(rb.velocity.y) == 0) //checks for downward velocity
+                {
+                    animator.SetBool("Fall", true);//sets fall animation
+                    animator.SetBool("Jump", false);//reverts jump animation
+                }
+                else if (rb.velocity.y / Mathf.Abs(rb.velocity.y) == 1) // checks for upward velocity
+                {
+                    animator.SetBool("Fall", false);//reverts fall animation
+                    animator.SetBool("Jump", true);//sets jump animation
+                }
+
+            }
+
+            if (Movement != 0)
+            {
+                float NormalScale = transform.localScale.x / Mathf.Abs(transform.localScale.x); //flips sprite
+                float NormalMovement = Movement / Mathf.Abs(Movement);
+                if (NormalScale == NormalMovement)
+                {
+                    transform.localScale = Vector3.Scale(new Vector3(-1f, 1f, 1f), transform.localScale);
+                }
+                else
+                {
+                    transform.localScale = Vector3.Scale(new Vector3(1f, 1f, 1f), transform.localScale);
+                }
+
+                RaycastHit2D Walled = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), LayerMask.GetMask("Wall"));
+                if (Walled.collider != null)//checks if touching wall
+                {
+                    if (Walled.collider.gameObject.CompareTag("Wall"))
+                    {
+                        TouchingWall = true;
+
+                    }
+                    else
+                    {
+                        TouchingWall = false;
+                        if (TouchingGround)
+                        {
+
+                            AnimationWalk();
+                        }
                     }
                 }
             }
-        }
-        else { AnimationWalk(); }
+            else { AnimationWalk(); }
 
-        void AnimationWalk()
-        {
-
-
-            if (Mathf.Abs(Horizontal) > 0.2d) //sets walk animation
+            void AnimationWalk()
             {
-                animator.SetFloat("Speed", 0.3f);
+
+
+                if (Mathf.Abs(Horizontal) > 0.2d) //sets walk animation
+                {
+                    animator.SetFloat("Speed", 0.3f);
+                }
+                else
+                { animator.SetFloat("Speed", 0.1f); }
             }
-            else
-            { animator.SetFloat("Speed", 0.1f); }
+            if (Health > 0)
+            {
+                JumpStart();
+                AttackStart();
+            }
+            DamagesDelay -= Time.deltaTime;
+
+            if (DamagesDelay <= 0.0f && DamageIncoming > 0)
+            {
+                DamagesDelay = 1.0f;
+                Health -= DamageIncoming;
+                DamageIncoming = 0;
+            }
         }
-        JumpStart();
-        AttackStart();
-
-        DamagesDelay -= Time.deltaTime;
-
-        if (DamagesDelay <= 0.0f && DamageIncoming > 0)
+        else
         {
-            DamagesDelay = 1.0f;
-            Health -= DamageIncoming;
-            DamageIncoming = 0;
+            
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 90f));
+            rb.bodyType = RigidbodyType2D.Static;
+            animator.SetBool("Jump", false);
+            animator.SetBool("Fall", false);
+            animator.SetFloat("Speed", 0.1f);
+            animator.SetBool("Attack1", false);
+            StartCoroutine(Respawn());
         }
-
     }
 
 
@@ -239,5 +253,23 @@ public class ControlsCSharp : MonoBehaviour
 
         animator.SetBool("Attack1", false);
         attacking = false;
-    } 
+    }
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(4f);
+        
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        Health = MaxHealth;
+        //stuff for respawning
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("DeathBlock")) 
+        {
+            Health = 0;
+        }
+    }
 }

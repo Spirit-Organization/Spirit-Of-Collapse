@@ -16,11 +16,13 @@ public class HealthControl : MonoBehaviour
     private GameObject Heart7;
     private GameObject Heart8;
     private GameObject Heart9;
+    private int Health;
 
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
         MaxHealth = Player.GetComponent<ControlsCSharp>().MaxHealth;
+        Health = Player.GetComponent<ControlsCSharp>().Health;
         Heart6 = Hearts[5] as GameObject;
         Heart7 = Hearts[6] as GameObject;
         Heart8 = Hearts[7] as GameObject;
@@ -31,7 +33,17 @@ public class HealthControl : MonoBehaviour
     {   //changes the sprite of the heath depending on the health value
         index = 0;
         MaxHealth = Player.GetComponent<ControlsCSharp>().MaxHealth;
+        Health = Player.GetComponent<ControlsCSharp>().Health;
 
+        if (Health < 1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+      
         foreach (GameObject CurrentObject in Hearts)
         {
             index += 1;
