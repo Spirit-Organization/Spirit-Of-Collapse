@@ -82,7 +82,7 @@ public class BloodHunterAI : MonoBehaviour
     IEnumerator Attack() //starts attacking
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         if (transform.localScale.x > 0)
         {
@@ -94,7 +94,7 @@ public class BloodHunterAI : MonoBehaviour
         }
 
         DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
-        Destroy(DamageBox, 1f);
+        Destroy(DamageBox, 0.5f);
 
         yield return new WaitForSeconds(0.5f);
 

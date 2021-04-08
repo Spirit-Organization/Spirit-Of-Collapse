@@ -18,16 +18,15 @@ public class CameraMovement : MonoBehaviour
         m_OrthographicCamera = gameObject.GetComponent<Camera>();
         player = GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().Player;
         scene = SceneManager.GetActiveScene();
-
     }
 
     void Update()
     {
         if (CameraShakes == true) //checks for camera shaking
-        { 
+        {
             StartCoroutine(CameraShake()); //starts camera shake
         }
-        else 
+        else
         {
             if (scene.name == "Scene4") //checks for pillbug bossfight
             {
@@ -41,6 +40,7 @@ public class CameraMovement : MonoBehaviour
                 m_OrthographicCamera.orthographicSize = DefaultSize;
             }
         }
+
     }
 
     IEnumerator CameraShake()
