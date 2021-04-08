@@ -1219,7 +1219,12 @@ PrefabInstance:
     - target: {fileID: 5685639937243251222, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
         type: 3}
       propertyPath: Speed
-      value: 70
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685639937243251222, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
+        type: 3}
+      propertyPath: JumpPower
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6776013324986201616, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
         type: 3}
@@ -3182,7 +3187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"Scene","value":{"$content":"MainScene","$type":"System.String"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Scene","value":{"$content":"Scene4","$type":"System.String"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &6462226362942235737
 MonoBehaviour:
