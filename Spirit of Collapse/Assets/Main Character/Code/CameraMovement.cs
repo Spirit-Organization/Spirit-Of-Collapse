@@ -35,8 +35,29 @@ public class CameraMovement : MonoBehaviour
             }
             else
             {
+                if (player.transform.position.x > transform.position.x + 5)
+                {
+                    transform.position = new Vector3(player.transform.position.x - 5, transform.position.y, -100f);
+                    
+                }
+                if (player.transform.position.x < transform.position.x - 5)
+                {
+                    transform.position = new Vector3(player.transform.position.x + 5, transform.position.y , -100f);
+                    
+                }
 
-                transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, -100f); //sets for standard camera size and movement
+                if (player.transform.position.y > transform.position.y + 3)
+                {
+                    transform.position = new Vector3(transform.position.x, player.transform.position.y - 3, -100f);
+                    
+                }
+                if (player.transform.position.y < transform.position.y - 3)
+                {
+                    transform.position = new Vector3(transform.position.x, player.transform.position.y + 3, -100f);
+                    
+                }
+                
+
                 m_OrthographicCamera.orthographicSize = DefaultSize;
             }
         }
