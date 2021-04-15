@@ -82,19 +82,22 @@ public class BloodHunterAI : MonoBehaviour
     IEnumerator Attack() //starts attacking
     {
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
 
         if (transform.localScale.x > 0)
         {
-            DamagePosition = transform.position + new Vector3(2.0f, -1f, 0.0f);
+            DamagePosition = transform.position + new Vector3(2.31f, -1.72f, 0.0f);
         }
         else
         {
-            DamagePosition = transform.position + new Vector3(-2.0f, -1f, 0.0f);
+            DamagePosition = transform.position + new Vector3(-2.31f, -1.72f, 0.0f);
         }
 
-        DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
-        Destroy(DamageBox, 0.5f);
+        if (Dead == false)
+        {
+            DamageBox = Instantiate(EnemyDamagePrefab, DamagePosition, Quaternion.identity); //clones damage box
+        }
+        Destroy(DamageBox, 0.4f);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -107,7 +110,7 @@ public class BloodHunterAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<ControlsCSharp>().DamageIncoming = 1;
+            GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().Health -= 1;
         }
         if (col.gameObject.CompareTag("DeathBlock") || col.gameObject.CompareTag("Projectile"))
         {

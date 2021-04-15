@@ -31,6 +31,7 @@ public class ControlsCSharp : MonoBehaviour
     public int DamageIncoming;
     private float DamagesDelay = 1;
     private Vector3 WeaponPosition;
+    private float AttackCooldown = 0.5f;
 
     void Start()
     {
@@ -52,7 +53,7 @@ public class ControlsCSharp : MonoBehaviour
             Horizontal = Input.GetAxis("Horizontal");
             Attack = Input.GetButtonDown("Fire1");
 
-                RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -3.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
+            RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -3.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
             if (Watered.collider != null)
             {
                 if (Watered.collider.gameObject.CompareTag("Water"))
@@ -151,8 +152,10 @@ public class ControlsCSharp : MonoBehaviour
             }
             if (Health > 0)
             {
-                JumpStart();
-                AttackStart();
+                AttackCooldown -= Time.deltaTime;
+                JumpStart();               
+                AttackStart();                  
+                
             }
             DamagesDelay -= Time.deltaTime;
 
@@ -165,7 +168,7 @@ public class ControlsCSharp : MonoBehaviour
         }
         else
         {
-            
+
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 90f));
             rb.bodyType = RigidbodyType2D.Static;
             animator.SetBool("Jump", false);
@@ -222,20 +225,24 @@ public class ControlsCSharp : MonoBehaviour
 
     void AttackStart()
     {
-        if (Attack == true) //checks if player is pressing a button for attacking
+        if (AttackCooldown <= 0)
         {
-            Attack = false; //resets button for attacking manually just in case
+            if (Attack == true) //checks if player is pressing a button for attacking
+            {
+                Attack = false; //resets button for attacking manually just in case
 
-            attacking = true;
-            animator.SetBool("Attack1", true); //sets attack animation 1 to true
+                attacking = true;
+                animator.SetBool("Attack1", true); //sets attack animation 1 to true           
 
-            StartCoroutine(Attack1Done());
-
-        }
-    }
+                StartCoroutine(Attack1Done());
+                AttackCooldown = 0.5f;
+            }
+        } 
+    } 
+    
     IEnumerator Attack1Done()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         if (transform.localScale.x > 0)
         {
             WeaponPosition = transform.position + new Vector3(-1.0f, 0f, 0.0f);
@@ -246,10 +253,10 @@ public class ControlsCSharp : MonoBehaviour
         }
 
         GameObject DamageBox = Instantiate(WeaponPrefab, WeaponPosition, Quaternion.identity); //clones damage box
-        Destroy(DamageBox, 0.4f);
+        Destroy(DamageBox, 0.2f);
 
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
 
         animator.SetBool("Attack1", false);
         attacking = false;
