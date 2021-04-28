@@ -11,6 +11,8 @@ public class CameraMovement : MonoBehaviour
     private GameObject player;
     public float DefaultSize;
     public bool CameraShakes = false;
+    public float BoxXSize;
+    public float BoxYSize;
     private Scene scene;
     void Start()
     {
@@ -35,25 +37,25 @@ public class CameraMovement : MonoBehaviour
             }
             else
             {
-                if (player.transform.position.x > transform.position.x + 5)
+                if (player.transform.position.x > transform.position.x + BoxXSize)
                 {
-                    transform.position = new Vector3(player.transform.position.x - 5, transform.position.y, -100f);
+                    transform.position = new Vector3(player.transform.position.x - BoxXSize, transform.position.y, -100f);
                     
                 }
-                if (player.transform.position.x < transform.position.x - 5)
+                if (player.transform.position.x < transform.position.x - BoxXSize)
                 {
-                    transform.position = new Vector3(player.transform.position.x + 5, transform.position.y , -100f);
+                    transform.position = new Vector3(player.transform.position.x + BoxXSize, transform.position.y , -100f);
                     
                 }
 
-                if (player.transform.position.y > transform.position.y + 3)
+                if (player.transform.position.y > transform.position.y + BoxYSize)
                 {
-                    transform.position = new Vector3(transform.position.x, player.transform.position.y - 3, -100f);
+                    transform.position = new Vector3(transform.position.x, player.transform.position.y - BoxYSize, -100f);
                     
                 }
-                if (player.transform.position.y < transform.position.y - 3)
+                if (player.transform.position.y < transform.position.y - BoxYSize)
                 {
-                    transform.position = new Vector3(transform.position.x, player.transform.position.y + 3, -100f);
+                    transform.position = new Vector3(transform.position.x, player.transform.position.y + BoxYSize, -100f);
                     
                 }
                 

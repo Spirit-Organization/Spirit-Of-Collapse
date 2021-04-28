@@ -5,6 +5,7 @@ using UnityEngine;
 public class PillBug : MonoBehaviour
 {
     public GameObject Player;
+    public Sprite RollSprite;
     public GameObject DamageBoxPrefab;
     public GameObject Shockwaves;
     private Rigidbody2D rb;
@@ -15,8 +16,7 @@ public class PillBug : MonoBehaviour
     private bool Attack;
     private float AttackCool = 3;
     public int JumpPower;
-    [SerializeField]
-    private bool Rolling;
+    private bool Roll;
 
 
 
@@ -43,14 +43,14 @@ public class PillBug : MonoBehaviour
             }
             GetComponent<Animator>().SetBool("PillWalk", false);
 
-            if ((Mathf.Abs(Player.transform.position.x) - Mathf.Abs(transform.position.x)) < 10)
+            if (Mathf.Abs(Player.transform.position.x - transform.position.x) < 10)
             {
                 AttackCool -= Time.deltaTime;
                 if (AttackCool <= 0)
                 {
                     Attack = true;
                     Following = false;
-                    AttackCool = 1;
+                    AttackCool = 2;
                 }
             }
         }
@@ -69,12 +69,29 @@ public class PillBug : MonoBehaviour
                 Attack = false;
 
             }
-
-
-            if (Rolling == true)
+        }
+        Debug.Log(Mathf.Abs(Player.transform.position.x - transform.position.x));
+        if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 15 & GetComponent<Animator>().GetBool("PillJump") == false)
+        {
+            StartCoroutine(RollStart());
+            if (Roll == true)
             {
-                Roll();
+                if (Mathf.Abs(transform.localScale.x) / transform.localScale.x == 1)
+                {
+                    transform.Rotate(0, 0, 20f);
+                    rb.velocity = new Vector2(Speed * -5, rb.velocity.y);
+                }
+                else
+                {
+                    transform.Rotate(0, 0, -20f);
+                    rb.velocity = new Vector2(Speed * 5, rb.velocity.y);
+                }
             }
+        }
+        else if (Roll==true)
+        {
+            Roll = false;
+            StartCoroutine(RollEnd());
         }
     }
     IEnumerator Swipe()
@@ -97,36 +114,44 @@ public class PillBug : MonoBehaviour
         GetComponent<Animator>().SetBool("PillJump", false);
 
     }
-    void Roll()
+    IEnumerator RollStart()
     {
-        GetComponent<Animator>().SetBool("PillRoll", true);
+        GetComponent<Animator>().SetBool("PillIntoBall", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = true;
-        rb.velocity = new Vector2(Speed * 5, rb.velocity.y);
-        if (Mathf.Abs(transform.localScale.x / transform.localScale.x) == 1)
-        {
-            transform.Rotate(0, 0, 20f);
-        }
-        else
-        {
-            transform.Rotate(0, 0, -20f);
-        }
-        GetComponent<Animator>().SetBool("PillRoll", false);
+        Following = false;
+        GetComponent<Animator>().SetBool("PillBall", true);
 
+        yield return new WaitForSeconds(1.2f);
+        Roll = true;
+    } 
+
+    IEnumerator RollEnd()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        GetComponent<CapsuleCollider2D>().enabled = true;
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<Animator>().SetBool("PillBall", false);
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        Roll = false;
+
+        yield return new WaitForSeconds(1.2f);
+        GetComponent<Animator>().SetBool("PillIntoBall", false);
+        Following = true;
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (Following == false && collision.gameObject.CompareTag("Platform") && GetComponent<Animator>().GetBool("PillJump") == true)
         {
-            GameObject Shockwave = Instantiate(Shockwaves,new Vector3( (Mathf.Abs(transform.localScale.x)/transform.localScale.x) * 2 + transform.position.x, transform.position.y - 2.7f,transform.position.z), Quaternion.identity);
-            Shockwave.GetComponent<Rigidbody2D>().velocity = new Vector2( 10 * (Mathf.Abs(transform.localScale.x) / transform.localScale.x), Shockwave.GetComponent<Rigidbody2D>().velocity.y);
+            GameObject Shockwave = Instantiate(Shockwaves, new Vector3((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * 2 + transform.position.x, transform.position.y - 2.7f, transform.position.z), Quaternion.identity);
+            Shockwave.GetComponent<Rigidbody2D>().velocity = new Vector2(10 * (Mathf.Abs(transform.localScale.x) / transform.localScale.x), Shockwave.GetComponent<Rigidbody2D>().velocity.y);
             Destroy(Shockwave, 3);
 
 
             GameObject Shockwave2 = Instantiate(Shockwaves, new Vector3((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * -2 + transform.position.x, transform.position.y - 2.7f, transform.position.z), Quaternion.identity);
             Shockwave2.GetComponent<Rigidbody2D>().velocity = new Vector2(-10 * (Mathf.Abs(transform.localScale.x) / transform.localScale.x), Shockwave2.GetComponent<Rigidbody2D>().velocity.y);
             Destroy(Shockwave2, 3);
-            
+
 
             StartCoroutine(Shake());
         }
