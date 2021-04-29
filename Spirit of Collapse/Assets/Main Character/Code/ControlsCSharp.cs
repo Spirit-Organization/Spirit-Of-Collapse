@@ -165,6 +165,7 @@ public class ControlsCSharp : MonoBehaviour
                 Health -= DamageIncoming;
                 DamageIncoming = 0;
             }
+            DamageIncoming = 0;
         }
         else
         {

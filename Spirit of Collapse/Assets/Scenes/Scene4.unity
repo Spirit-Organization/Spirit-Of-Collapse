@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1121532639}
+  RollSprite: {fileID: 21300000, guid: c3d9f286ce77b344a80ac580a685ce64, type: 3}
   DamageBoxPrefab: {fileID: 8201768913416742896, guid: 82e0ea2980423a941a1fe3eef46b9067,
     type: 3}
   Shockwaves: {fileID: 6011773297173879972, guid: 9c8525e1551142744ba74419cc717e8a,
