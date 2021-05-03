@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1679f2cba0950a44e90424c1ea6ad71a
+guid: 25a5274cfb6b6f94fbfedcfdb0dadf19
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -72,65 +72,8 @@ TextureImporter:
       213: -8699367434085747905
     second: platform-2_22
   - first:
-      213: -6395190302304055279
-    second: platform-2_0
-  - first:
-      213: -1674024881970405698
-    second: platform-2_1
-  - first:
-      213: 6312388215303293666
-    second: platform-2_2
-  - first:
-      213: 7358994986556434341
-    second: platform-2_3
-  - first:
-      213: -2932282765402386222
-    second: platform-2_4
-  - first:
-      213: 4910025514095688661
-    second: platform-2_5
-  - first:
-      213: 4899307921561693892
-    second: platform-2_6
-  - first:
-      213: -2716562026072974690
-    second: platform-2_7
-  - first:
-      213: -4805747265791479932
-    second: platform-2_8
-  - first:
-      213: -6236173113636851564
-    second: platform-2_9
-  - first:
-      213: -6780081521539421806
-    second: platform-2_10
-  - first:
-      213: -1990706623866809321
-    second: platform-2_11
-  - first:
-      213: -8715812813030982863
-    second: platform-2_12
-  - first:
-      213: -8982567042199727889
-    second: platform-2_13
-  - first:
-      213: 7003810292747976165
-    second: platform-2_14
-  - first:
-      213: 2226252771973496156
-    second: platform-2_15
-  - first:
-      213: -7756926096300474718
-    second: platform-2_16
-  - first:
-      213: -2016242912273007498
-    second: platform-2_17
-  - first:
-      213: 9014110395607540079
-    second: platform-2_18
-  - first:
-      213: -6804298149212480454
-    second: platform-2_19
+      213: 1136858333395842565
+    second: platform-2_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -219,8 +162,8 @@ TextureImporter:
       name: platform-2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2206
+        x: 3
+        y: 2201
         width: 550
         height: 550
       alignment: 0
@@ -240,8 +183,8 @@ TextureImporter:
       name: platform-2_1
       rect:
         serializedVersion: 2
-        x: 550
-        y: 2206
+        x: 553
+        y: 2201
         width: 550
         height: 550
       alignment: 0
@@ -261,8 +204,8 @@ TextureImporter:
       name: platform-2_2
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 2206
+        x: 1103
+        y: 2201
         width: 550
         height: 550
       alignment: 0
@@ -282,8 +225,8 @@ TextureImporter:
       name: platform-2_3
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 2206
+        x: 1653
+        y: 2201
         width: 550
         height: 550
       alignment: 0
@@ -303,8 +246,8 @@ TextureImporter:
       name: platform-2_4
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 2206
+        x: 2203
+        y: 2201
         width: 550
         height: 550
       alignment: 0
@@ -324,8 +267,8 @@ TextureImporter:
       name: platform-2_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1656
+        x: 3
+        y: 1651
         width: 550
         height: 550
       alignment: 0
@@ -345,8 +288,8 @@ TextureImporter:
       name: platform-2_6
       rect:
         serializedVersion: 2
-        x: 550
-        y: 1656
+        x: 553
+        y: 1651
         width: 550
         height: 550
       alignment: 0
@@ -366,8 +309,8 @@ TextureImporter:
       name: platform-2_7
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 1656
+        x: 1103
+        y: 1651
         width: 550
         height: 550
       alignment: 0
@@ -387,8 +330,8 @@ TextureImporter:
       name: platform-2_8
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 1656
+        x: 1653
+        y: 1651
         width: 550
         height: 550
       alignment: 0
@@ -408,8 +351,8 @@ TextureImporter:
       name: platform-2_9
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 1656
+        x: 2203
+        y: 1651
         width: 550
         height: 550
       alignment: 0
@@ -429,8 +372,8 @@ TextureImporter:
       name: platform-2_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1106
+        x: 3
+        y: 1101
         width: 550
         height: 550
       alignment: 0
@@ -450,8 +393,8 @@ TextureImporter:
       name: platform-2_11
       rect:
         serializedVersion: 2
-        x: 550
-        y: 1106
+        x: 553
+        y: 1101
         width: 550
         height: 550
       alignment: 0
@@ -471,8 +414,8 @@ TextureImporter:
       name: platform-2_12
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 1106
+        x: 1653
+        y: 1101
         width: 550
         height: 550
       alignment: 0
@@ -492,8 +435,8 @@ TextureImporter:
       name: platform-2_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 556
+        x: 2203
+        y: 1101
         width: 550
         height: 550
       alignment: 0
@@ -513,8 +456,8 @@ TextureImporter:
       name: platform-2_14
       rect:
         serializedVersion: 2
-        x: 550
-        y: 556
+        x: 3
+        y: 551
         width: 550
         height: 550
       alignment: 0
@@ -534,8 +477,8 @@ TextureImporter:
       name: platform-2_15
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 556
+        x: 553
+        y: 551
         width: 550
         height: 550
       alignment: 0
@@ -555,8 +498,8 @@ TextureImporter:
       name: platform-2_16
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 556
+        x: 1103
+        y: 551
         width: 550
         height: 550
       alignment: 0
@@ -576,8 +519,8 @@ TextureImporter:
       name: platform-2_17
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 556
+        x: 1653
+        y: 551
         width: 550
         height: 550
       alignment: 0
@@ -597,8 +540,8 @@ TextureImporter:
       name: platform-2_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 6
+        x: 2203
+        y: 551
         width: 550
         height: 550
       alignment: 0
@@ -618,8 +561,8 @@ TextureImporter:
       name: platform-2_19
       rect:
         serializedVersion: 2
-        x: 550
-        y: 6
+        x: 3
+        y: 1
         width: 550
         height: 550
       alignment: 0
@@ -639,8 +582,8 @@ TextureImporter:
       name: platform-2_20
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 6
+        x: 553
+        y: 1
         width: 550
         height: 550
       alignment: 0
@@ -660,8 +603,8 @@ TextureImporter:
       name: platform-2_21
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 6
+        x: 1103
+        y: 1
         width: 550
         height: 550
       alignment: 0
@@ -681,8 +624,8 @@ TextureImporter:
       name: platform-2_22
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 6
+        x: 1653
+        y: 1
         width: 550
         height: 550
       alignment: 0
@@ -694,6 +637,27 @@ TextureImporter:
       bones: []
       spriteID: f33b7b0f863a54780800000000000000
       internalID: -8699367434085747905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform-2_23
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 1
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506700281aee6cf00800000000000000
+      internalID: 1136858333395842565
       vertices: []
       indices: 
       edges: []

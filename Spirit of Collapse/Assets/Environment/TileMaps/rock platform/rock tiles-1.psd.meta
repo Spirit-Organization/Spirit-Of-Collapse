@@ -50,6 +50,54 @@ TextureImporter:
   - first:
       213: -6611663787143787297
     second: rock tiles-1_15
+  - first:
+      213: 2069940803531433506
+    second: rock tiles-1_0
+  - first:
+      213: -2246442075182630397
+    second: rock tiles-1_1
+  - first:
+      213: 9066506954619440499
+    second: rock tiles-1_2
+  - first:
+      213: -42001276334845642
+    second: rock tiles-1_3
+  - first:
+      213: -3497475073721488084
+    second: rock tiles-1_4
+  - first:
+      213: -5320142189061265436
+    second: rock tiles-1_5
+  - first:
+      213: -2456047833136690525
+    second: rock tiles-1_6
+  - first:
+      213: -2524703723345688184
+    second: rock tiles-1_7
+  - first:
+      213: -8019156193475930106
+    second: rock tiles-1_8
+  - first:
+      213: -1618318501262494604
+    second: rock tiles-1_9
+  - first:
+      213: 6457395277729374301
+    second: rock tiles-1_10
+  - first:
+      213: 3034261869160922748
+    second: rock tiles-1_11
+  - first:
+      213: -2865072862218699702
+    second: rock tiles-1_12
+  - first:
+      213: 8324041358828147148
+    second: rock tiles-1_13
+  - first:
+      213: -6030792985709696150
+    second: rock tiles-1_14
+  - first:
+      213: 1577844699900292810
+    second: rock tiles-1_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
