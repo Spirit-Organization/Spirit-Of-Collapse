@@ -29,7 +29,7 @@ public class ControlsCSharp : MonoBehaviour
     private bool Attack2 = false;
     private bool attacking = false;
     public int DamageIncoming;
-    private float DamagesDelay = 1;
+    private float DamagesDelay = 3;
     private Vector3 WeaponPosition;
     private float AttackCooldown = 0.5f;
 
@@ -153,19 +153,22 @@ public class ControlsCSharp : MonoBehaviour
             if (Health > 0)
             {
                 AttackCooldown -= Time.deltaTime;
-                JumpStart();               
-                AttackStart();                  
-                
+                JumpStart();
+                AttackStart();
+
             }
             DamagesDelay -= Time.deltaTime;
 
             if (DamagesDelay <= 0.0f && DamageIncoming > 0)
             {
-                DamagesDelay = 1.0f;
+                DamagesDelay = 3.0f;
                 Health -= DamageIncoming;
                 DamageIncoming = 0;
             }
-            DamageIncoming = 0;
+            else
+            {
+                DamageIncoming = 0;
+            }
         }
         else
         {

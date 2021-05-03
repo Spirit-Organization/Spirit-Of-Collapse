@@ -110,7 +110,7 @@ public class BloodHunterAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().Health -= 1;
+            GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().DamageIncoming = 1;
         }
         if (col.gameObject.CompareTag("DeathBlock") || col.gameObject.CompareTag("Projectile"))
         {

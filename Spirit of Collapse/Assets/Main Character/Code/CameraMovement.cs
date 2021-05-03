@@ -30,41 +30,33 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
-            if (scene.name == "Scene4") //checks for pillbug bossfight
-            {
-                transform.position = new Vector3(12.93f, 7.7f, -100f); //sets size for pillbug bossfight
-                m_OrthographicCamera.orthographicSize = 15;
-            }
-            else
-            {
-                if (player.transform.position.x > transform.position.x + BoxXSize)
-                {
-                    transform.position = new Vector3(player.transform.position.x - BoxXSize, transform.position.y, -100f);
-                    
-                }
-                if (player.transform.position.x < transform.position.x - BoxXSize)
-                {
-                    transform.position = new Vector3(player.transform.position.x + BoxXSize, transform.position.y , -100f);
-                    
-                }
 
-                if (player.transform.position.y > transform.position.y + BoxYSize)
-                {
-                    transform.position = new Vector3(transform.position.x, player.transform.position.y - BoxYSize, -100f);
-                    
-                }
-                if (player.transform.position.y < transform.position.y - BoxYSize)
-                {
-                    transform.position = new Vector3(transform.position.x, player.transform.position.y + BoxYSize, -100f);
-                    
-                }
-                
+            if (player.transform.position.x > transform.position.x + BoxXSize)
+            {
+                transform.position = new Vector3(player.transform.position.x - BoxXSize, transform.position.y, -100f);
 
-                m_OrthographicCamera.orthographicSize = DefaultSize;
             }
+            if (player.transform.position.x < transform.position.x - BoxXSize)
+            {
+                transform.position = new Vector3(player.transform.position.x + BoxXSize, transform.position.y, -100f);
+
+            }
+
+            if (player.transform.position.y > transform.position.y + BoxYSize)
+            {
+                transform.position = new Vector3(transform.position.x, player.transform.position.y - BoxYSize, -100f);
+
+            }
+            if (player.transform.position.y < transform.position.y - BoxYSize)
+            {
+                transform.position = new Vector3(transform.position.x, player.transform.position.y + BoxYSize, -100f);
+
+            }
+
+
+            m_OrthographicCamera.orthographicSize = DefaultSize;
         }
-
-    }
+    } 
 
     IEnumerator CameraShake()
     {
@@ -73,22 +65,13 @@ public class CameraMovement : MonoBehaviour
         if (ShakeDelay <= 0.0f)
         {
             ShakeDelay = 0.2f;
-            if (scene.name == "Scene4") //checks for stationary scene
-            {
-                transform.Rotate(new Vector3(0f, 0f, 1f)); //sets for stationary scene
-                rb.MovePosition(new Vector2(transform.position.x - 0.5f,transform.position.y - 0.5f));
-                yield return new WaitForSeconds(0.1f);
-                transform.Rotate(new Vector3(0f, 0f, -1f));
-                rb.MovePosition(new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f));
-            }
-            else
-            {
+         
                 transform.Rotate(new Vector3(0f, 0f, 1f)); //sets for normal scene
                 rb.MovePosition(new Vector2(player.transform.position.x - 0.5f, player.transform.position.y - 0.5f));
                 yield return new WaitForSeconds(0.1f);
                 transform.Rotate(new Vector3(0f, 0f, -1f));
                 rb.MovePosition(new Vector2(player.transform.position.x + 0.5f, player.transform.position.y + 0.5f));
-            }
+            
         }
     }
 }
