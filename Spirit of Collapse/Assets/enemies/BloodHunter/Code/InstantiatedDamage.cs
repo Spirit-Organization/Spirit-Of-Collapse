@@ -12,6 +12,7 @@ public class InstantiatedDamage : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             col.gameObject.GetComponent<ControlsCSharp>().DamageIncoming = DamageToInflict;
+            Destroy(this.gameObject);
         }
     }
 }
