@@ -55,7 +55,7 @@ public class ControlsCSharp : MonoBehaviour
             Horizontal = Input.GetAxis("Horizontal");
             Attack = Input.GetButtonDown("Fire1");
 
-            RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -3.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
+            RaycastHit2D Watered = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0f), new Vector2(0f, -12.0f), 1 << LayerMask.NameToLayer("Water"));//checks for water
             if (Watered.collider != null)
             {
                 if (Watered.collider.gameObject.CompareTag("Water"))
@@ -81,7 +81,7 @@ public class ControlsCSharp : MonoBehaviour
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
-            RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
+            RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 4, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
             if (Grounded.collider != null)// checks for ground
             {
 

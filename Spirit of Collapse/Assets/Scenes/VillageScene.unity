@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 458605857}
   m_Layer: 8
   m_Name: TerrainTilemap
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70174,10 +70174,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1750113044906616033, guid: 548f2078b2331704daa8eb5b817fdccd,
+        type: 3}
+      propertyPath: orthographic size
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1750113044906616034, guid: 548f2078b2331704daa8eb5b817fdccd,
         type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394509307048135738, guid: 548f2078b2331704daa8eb5b817fdccd,
+        type: 3}
+      propertyPath: DefaultSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394509307048135738, guid: 548f2078b2331704daa8eb5b817fdccd,
+        type: 3}
+      propertyPath: BoxYSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394509307048135738, guid: 548f2078b2331704daa8eb5b817fdccd,
+        type: 3}
+      propertyPath: BoxXSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394509307048135738, guid: 548f2078b2331704daa8eb5b817fdccd,
+        type: 3}
+      propertyPath: CameraShakes
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 548f2078b2331704daa8eb5b817fdccd, type: 3}
