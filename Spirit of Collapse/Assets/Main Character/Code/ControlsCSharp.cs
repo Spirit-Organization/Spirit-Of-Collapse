@@ -32,6 +32,7 @@ public class ControlsCSharp : MonoBehaviour
     private float DamagesDelay = 3;
     private Vector3 WeaponPosition;
     private float AttackCooldown = 0.5f;
+    private SpriteRenderer sr;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class ControlsCSharp : MonoBehaviour
         Player = this.gameObject;
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
         Horizontal = Input.GetAxis("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         Attack = Input.GetButtonDown("Fire1");
@@ -162,8 +164,10 @@ public class ControlsCSharp : MonoBehaviour
             if (DamagesDelay <= 0.0f && DamageIncoming > 0)
             {
                 DamagesDelay = 3.0f;
+                sr.color = new Color(1, 1, 1, 0.5f);
                 Health -= DamageIncoming;
                 DamageIncoming = 0;
+                StartCoroutine(DamageRecovery());
             }
             else
             {
@@ -274,6 +278,11 @@ public class ControlsCSharp : MonoBehaviour
         Health = MaxHealth;
         //stuff for respawning
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    IEnumerator DamageRecovery()
+    {
+        yield return new WaitForSeconds(2);
+        sr.color = new Color(1, 1, 1, 1f);
     }
 
     void OnCollisionEnter2D(Collision2D col)
