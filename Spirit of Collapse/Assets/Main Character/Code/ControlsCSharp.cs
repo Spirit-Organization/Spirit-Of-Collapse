@@ -46,7 +46,6 @@ public class ControlsCSharp : MonoBehaviour
         Attack = Input.GetButtonDown("Fire1");
     }
 
-
     void Update()
     {
         if (Health > 0)
@@ -81,7 +80,8 @@ public class ControlsCSharp : MonoBehaviour
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
-            RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 4, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
+           
+            RaycastHit2D Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
             if (Grounded.collider != null)// checks for ground
             {
 
