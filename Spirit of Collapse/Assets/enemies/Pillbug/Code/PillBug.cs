@@ -23,6 +23,7 @@ public class PillBug : MonoBehaviour
     private Animator animator;
     private CircleCollider2D circle;
     private CapsuleCollider2D capsule;
+    private bool DJ = true;
 
 
 
@@ -41,7 +42,7 @@ public class PillBug : MonoBehaviour
     {
         if (Damaged == false)
         {
-
+            DJ = true;
 
             if (Following == true)
             {
@@ -107,13 +108,13 @@ public class PillBug : MonoBehaviour
                 {
                     transform.Rotate(0, 0, -20f);
                     rb.velocity = new Vector2(Speed * 6, rb.velocity.y);
-                }
+                }                
             }
 
         }
         else
         {
-            StartCoroutine(RollStart());
+            StartCoroutine(RollEnd());
             if (Player.transform.position.x < transform.position.x & Player.transform.position.x != transform.position.x)
             {
                 transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -122,18 +123,10 @@ public class PillBug : MonoBehaviour
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
-            if (Roll == true && Following == false)
+           if (DJ == true)
             {
-                if (Mathf.Abs(transform.localScale.x) / transform.localScale.x == 1)
-                {
-                    transform.Rotate(0, 0, 20f);
-                    rb.velocity = new Vector2(Speed * -6, rb.velocity.y);
-                }
-                else
-                {
-                    transform.Rotate(0, 0, -20f);
-                    rb.velocity = new Vector2(Speed * 6, rb.velocity.y);
-                }
+                StartCoroutine(Jump());
+                DJ = false;
             }
         }
     }
@@ -153,7 +146,8 @@ public class PillBug : MonoBehaviour
             GameObject Shockwave2 = Instantiate(Shockwaves, new Vector3((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * -2 + transform.position.x, transform.position.y - 1.4f, transform.position.z), Quaternion.identity);
             Shockwave2.GetComponent<Rigidbody2D>().velocity = new Vector2(-10 * (Mathf.Abs(transform.localScale.x) / transform.localScale.x), Shockwave2.GetComponent<Rigidbody2D>().velocity.y);
             Destroy(Shockwave2, 3);
-
+            if (Damaged == true)
+            { StartCoroutine(Jump()); }
 
             StartCoroutine(Shake());
         }
@@ -186,15 +180,17 @@ public class PillBug : MonoBehaviour
         yield return new WaitForSeconds(5);
         StartCoroutine(RollEnd());
         sr.color = new Color(1, 1, 1, 1);
+        Debug.Log("Jump");
     }
 
 
     IEnumerator Swipe()
     {
+        yield return new WaitForSeconds(0.5f);
         GameObject DamageBox = Instantiate(DamageBoxPrefab, new Vector3(-(transform.localScale.x / Mathf.Abs(transform.localScale.x)) * 4.6f + (transform.position.x), 0.4f + transform.position.y, transform.position.z), Quaternion.identity);
-        DamageBox.GetComponent<BoxCollider2D>().size = new Vector2(2.8f, 3.61f);
-        DamageBox.GetComponent<BoxCollider2D>().offset = new Vector2();
-        Destroy(DamageBox, 0.5f);
+        DamageBox.transform.localScale = new Vector3((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * DamageBox.transform.localScale.x * 0.5f,DamageBox.transform.localScale.y * 0.5f,DamageBox.transform.localScale.z *0.5f);
+        DamageBox.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * -10f, DamageBox.GetComponent<Rigidbody2D>().velocity.y);
+        Destroy(DamageBox, 3f);
         animator.SetBool("PillSlash", true);
 
         yield return new WaitForSeconds(1f);
