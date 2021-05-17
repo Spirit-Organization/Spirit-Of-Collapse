@@ -41,7 +41,7 @@ public class SmallBugCs : MonoBehaviour
             }
             animator.SetBool("PillWalk", true);
         }
-        else if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 2 && Mathf.Abs(Player.transform.position.x - transform.position.x) < 15)
+        else if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 2 && Mathf.Abs(Player.transform.position.x - transform.position.x) < 8)
         {
             if (Mathf.Abs(transform.localScale.x) / transform.localScale.x == 1)
             {
@@ -55,7 +55,7 @@ public class SmallBugCs : MonoBehaviour
             }
         }
         Debug.Log(Mathf.Abs(Player.transform.position.x - transform.position.x));
-        if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 7 && animator.GetBool("PillWalk") == true && Mathf.Abs(Player.transform.position.x - transform.position.x) < 14)
+        if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 4.5f && animator.GetBool("PillWalk") == true && Mathf.Abs(Player.transform.position.x - transform.position.x) < 7)
         {
             StartCoroutine(RollStart());
         }
