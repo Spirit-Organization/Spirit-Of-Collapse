@@ -25,7 +25,7 @@ public class SmallBugCs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Following)
+        if (Following && Mathf.Abs(Player.transform.position.x - transform.position.x) < 10)
         {
             if (Player.transform.position.x > transform.position.x & Player.transform.position.x != transform.position.x)
             {
