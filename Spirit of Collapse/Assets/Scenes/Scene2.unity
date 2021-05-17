@@ -4887,7 +4887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"Scene","value":{"$content":"Scene1","$type":"System.String"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Scene","value":{"$content":"Sceneinfested","$type":"System.String"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &1653171385
 MonoBehaviour:
@@ -4945,7 +4945,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 08da3c828e9f51d4581eaf4888141165, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -42341,12 +42341,12 @@ PrefabInstance:
     - target: {fileID: 9131355234372119916, guid: 6564f8928c3b40542b8edb7536e1f893,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.1
+      value: 97.72
       objectReference: {fileID: 0}
     - target: {fileID: 9131355234372119916, guid: 6564f8928c3b40542b8edb7536e1f893,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.65
+      value: 26.1
       objectReference: {fileID: 0}
     - target: {fileID: 9131355234372119916, guid: 6564f8928c3b40542b8edb7536e1f893,
         type: 3}
@@ -42397,12 +42397,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b77bfe6aeee0f244eba618c21e7e6662,
+      objectReference: {fileID: 21300000, guid: ba8a46c1393f84d8b96e2e1cd1c567a9,
         type: 3}
     - target: {fileID: 9131355234372119917, guid: 6564f8928c3b40542b8edb7536e1f893,
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131355234372119917, guid: 6564f8928c3b40542b8edb7536e1f893,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131355234372119917, guid: 6564f8928c3b40542b8edb7536e1f893,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.97669256
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131355234372119917, guid: 6564f8928c3b40542b8edb7536e1f893,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.504717
       objectReference: {fileID: 0}
     - target: {fileID: 9131355234372119920, guid: 6564f8928c3b40542b8edb7536e1f893,
         type: 3}
