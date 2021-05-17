@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PillBug : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PillBug : MonoBehaviour
     public Sprite RollSprite;
     public GameObject DamageBoxPrefab;
     public GameObject Shockwaves;
+    public GameObject screen;
     private Rigidbody2D rb;
     public int Speed;
     [SerializeField]
@@ -18,12 +20,15 @@ public class PillBug : MonoBehaviour
     public int JumpPower;
     private bool Roll;
     private bool Damaged;
-    private int Health;
+    [SerializeField]
+    private int Health = 5;
     private SpriteRenderer sr;
     private Animator animator;
     private CircleCollider2D circle;
     private CapsuleCollider2D capsule;
     private bool DJ = true;
+    [SerializeField]
+    private int DamageCap;
 
 
 
@@ -40,6 +45,7 @@ public class PillBug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit2D Ground = Physics2D.Raycast(transform.position, new Vector2(0, 1), -3.5f, LayerMask.GetMask("Platform"));
         if (Damaged == false)
         {
             DJ = true;
@@ -71,7 +77,7 @@ public class PillBug : MonoBehaviour
             }
 
 
-            if (Attack == true)
+            if (Attack == true && Ground == true)
             {
                 if (Random.value <= 0.5)
                 {
@@ -85,7 +91,6 @@ public class PillBug : MonoBehaviour
 
                 }
             }
-            Debug.Log(Mathf.Abs(Player.transform.position.x - transform.position.x));
             if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 20 & animator.GetBool("PillJump") == false)
             {
                 StartCoroutine(RollStart());
@@ -97,7 +102,7 @@ public class PillBug : MonoBehaviour
                 StartCoroutine(RollEnd());
             }
 
-            if (Roll == true && Following == false)
+            if (Roll == true && Following == false && animator.GetBool("PillBall"))
             {
                 if (Mathf.Abs(transform.localScale.x) / transform.localScale.x == 1)
                 {
@@ -135,7 +140,6 @@ public class PillBug : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         RaycastHit2D Ground = Physics2D.Raycast(transform.position, new Vector2(0, 1), -3.5f, LayerMask.GetMask("Platform"));
-
         if (Following == false && collision.gameObject.CompareTag("Platform") && animator.GetBool("PillJump") == true && Ground)
         {
             GameObject Shockwave = Instantiate(Shockwaves, new Vector3((Mathf.Abs(transform.localScale.x) / transform.localScale.x) * 2 + transform.position.x, transform.position.y - 1.4f, transform.position.z), Quaternion.identity);
@@ -155,11 +159,14 @@ public class PillBug : MonoBehaviour
         {
             GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().DamageIncoming = 1;
         }
-        if (collision.gameObject.CompareTag("Projectile") == true)
+        if (collision.gameObject.CompareTag("Projectile") == true && Damaged == false && DamageCap == 1 && Damaged == false)
         {
             Damaged = true;
-
             StartCoroutine(Hurt());
+        }
+        else if (collision.gameObject.CompareTag("Projectile") == true && Damaged == false)
+        {
+            DamageCap += 1;
         }
     } 
     
@@ -174,13 +181,23 @@ public class PillBug : MonoBehaviour
 
     IEnumerator Hurt()
     {
-        Health = -1;
+
+        if (DamageCap >= 0)
+        {
+            Health += -1;
+            DamageCap = 0;
+        }
         sr.color = new Color(1, 1, 1, 0.5f);
+        if (Health <= 0)
+        { 
+            screen.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("End");
+        }
 
         yield return new WaitForSeconds(5);
         StartCoroutine(RollEnd());
         sr.color = new Color(1, 1, 1, 1);
-        Debug.Log("Jump");
     }
 
 
@@ -217,12 +234,13 @@ public class PillBug : MonoBehaviour
 
     IEnumerator RollStart()
     {
-        animator.SetBool("PillIntoBall", true);
-        Following = false;
-        animator.SetBool("PillBall", true);
-        rb.velocity = new Vector2(0, rb.velocity.y);
 
-        yield return new WaitForSeconds(0.9f);
+        Following = false;
+        animator.SetBool("PillIntoBall", true);
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        animator.SetBool("PillBall", true);
+        yield return new WaitForSeconds(0.6f);
+
         Roll = true;
         capsule.enabled = false;
         circle .enabled = true;
