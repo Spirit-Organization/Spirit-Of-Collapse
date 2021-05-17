@@ -108,10 +108,7 @@ public class BloodHunterAI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().DamageIncoming = 1;
-        }
+        
         if (col.gameObject.CompareTag("DeathBlock") || col.gameObject.CompareTag("Projectile"))
         {
             Dead = true;
