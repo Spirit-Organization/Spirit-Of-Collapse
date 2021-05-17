@@ -84,6 +84,7 @@ public class ControlsCSharp : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "VillageScene")
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
+                rb.gravityScale = 1.75f;
             }
             else
             {
