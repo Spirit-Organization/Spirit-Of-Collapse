@@ -37,7 +37,7 @@ public class SplashScreens : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(9);
                 }
             }
         }

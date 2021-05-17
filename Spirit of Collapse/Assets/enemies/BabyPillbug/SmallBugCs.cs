@@ -9,6 +9,7 @@ public class SmallBugCs : MonoBehaviour
     private Rigidbody2D rb;
     public int Speed;
     private Animator animator;
+    [SerializeField]
     private bool Following = true;
     private CircleCollider2D circle;
     private CapsuleCollider2D capsule;
@@ -25,9 +26,10 @@ public class SmallBugCs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Following && Mathf.Abs(Player.transform.position.x - transform.position.x) < 10)
+        Player = GameObject.FindGameObjectWithTag("Player");
+        if (Following == true)
         {
-            if (Player.transform.position.x > transform.position.x & Player.transform.position.x != transform.position.x)
+            if (Player.transform.position.x > transform.position.x && Player.transform.position.x != transform.position.x)
             {
                 rb.velocity = new Vector2(Speed, rb.velocity.y);
                 transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -39,7 +41,7 @@ public class SmallBugCs : MonoBehaviour
             }
             animator.SetBool("PillWalk", true);
         }
-        else if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 2)
+        else if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 2 && Mathf.Abs(Player.transform.position.x - transform.position.x) < 15)
         {
             if (Mathf.Abs(transform.localScale.x) / transform.localScale.x == 1)
             {
