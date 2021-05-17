@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sceneinfested.unity
     guid: 1b36412f141504d9395bbf7f3e206f60
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 953f4e04c6035e643ae702e59a902e13
   m_configObjects: {}

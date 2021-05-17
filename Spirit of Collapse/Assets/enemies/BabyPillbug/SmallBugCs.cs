@@ -53,7 +53,7 @@ public class SmallBugCs : MonoBehaviour
             }
         }
         Debug.Log(Mathf.Abs(Player.transform.position.x - transform.position.x));
-        if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 7 && animator.GetBool("PillWalk") == true)
+        if (Mathf.Abs(Player.transform.position.x - transform.position.x) > 7 && animator.GetBool("PillWalk") == true && Mathf.Abs(Player.transform.position.x - transform.position.x) < 14)
         {
             StartCoroutine(RollStart());
         }

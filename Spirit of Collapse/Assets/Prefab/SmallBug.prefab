@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c383cc3c026648546af2070976b5facb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 4792318659906898109, guid: 45bf069d5d44aaa4da4a910d9d1a137f, type: 3}
   DeathPrefab: {fileID: 8602045508715404546, guid: aa519fd21dc16e84b921d2e80212cc28,
     type: 3}
   Speed: 3
