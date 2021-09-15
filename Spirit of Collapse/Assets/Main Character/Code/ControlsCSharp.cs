@@ -82,8 +82,6 @@ public class ControlsCSharp : MonoBehaviour
 
             }//sets movement
 
-            
-
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
             if (SceneManager.GetActiveScene().name == "VillageScene")
