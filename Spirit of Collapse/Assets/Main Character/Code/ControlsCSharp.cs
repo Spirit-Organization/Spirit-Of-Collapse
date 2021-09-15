@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,7 +34,7 @@ public class ControlsCSharp : MonoBehaviour
     private float AttackCooldown = 0.5f;
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
-
+    public bool testing;
     void Start()
     {
 
@@ -91,7 +91,7 @@ public class ControlsCSharp : MonoBehaviour
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
 
             }
-            if (Grounded.collider != null)// checks for ground
+            if (Grounded.collider != null || testing == true)// checks for ground
             {
 
                 JumpPerWall = 0;
