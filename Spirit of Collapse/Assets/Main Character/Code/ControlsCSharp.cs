@@ -8,6 +8,8 @@ public class ControlsCSharp : MonoBehaviour
 
     public GameObject Player;
     public GameObject WeaponPrefab;
+    private AudioSource playerAudio;
+    public AudioClip grassRun; 
     public int Health;
     public int MaxHealth;
     public int Speed;
@@ -42,6 +44,7 @@ public class ControlsCSharp : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        playerAudio = GetComponent<AudioSource>();
         Horizontal = Input.GetAxis("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         Attack = Input.GetButtonDown("Fire1");
