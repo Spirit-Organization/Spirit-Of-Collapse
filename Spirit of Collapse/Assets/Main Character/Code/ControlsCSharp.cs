@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,6 +34,7 @@ public class ControlsCSharp : MonoBehaviour
     private float AttackCooldown = 0.5f;
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
+    public bool x1scale = true;
 
     void Start()
     {
@@ -75,13 +76,13 @@ public class ControlsCSharp : MonoBehaviour
             } // sets movement for water
             else
             {
-                Movement = Horizontal * Speed * 10 * Time.deltaTime;
+                Movement = Horizontal * Speed * 10;
 
             }//sets movement
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
-            if (SceneManager.GetActiveScene().name == "VillageScene")
+            if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
                 rb.gravityScale = 2f;
