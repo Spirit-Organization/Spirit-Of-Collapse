@@ -36,7 +36,7 @@ public class ControlsCSharp : MonoBehaviour
     private float AttackCooldown = 0.5f;
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
-    public bool testing;
+    public bool x1scale;
     void Start()
     {
 
@@ -84,7 +84,7 @@ public class ControlsCSharp : MonoBehaviour
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
-            if (SceneManager.GetActiveScene().name == "VillageScene")
+            if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale)
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
                 rb.gravityScale = 2f;
@@ -94,7 +94,7 @@ public class ControlsCSharp : MonoBehaviour
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, 0, 0), 0.7f, new Vector2(0, -0.7f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
 
             }
-            if (Grounded.collider != null || testing == true)// checks for ground
+            if (Grounded.collider != null)// checks for ground
             {
 
                 JumpPerWall = 0;
