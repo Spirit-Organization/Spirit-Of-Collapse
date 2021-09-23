@@ -103,7 +103,7 @@ public class ControlsCSharp : MonoBehaviour
            else
             {
                 audioSrc.Stop();
-            }
+            }//plays audio when moving 
 
 
 
