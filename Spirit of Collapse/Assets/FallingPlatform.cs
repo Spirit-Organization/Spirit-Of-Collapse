@@ -20,14 +20,26 @@ public class FallingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+      if (collision.gameObject.tag == "Player")
         {
             rb.isKinematic = false;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bounds" && respawns)
+        {
+            rb.isKinematic = true;
+            rb.velocity = new Vector3(0, 0, 0);
+            transform.position = startPos;
+        }
+
+    }
+
 }
+ 
