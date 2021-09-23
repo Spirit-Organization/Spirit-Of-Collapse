@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - Water
   - DeathBlock
+  - Environment
+  - Bounds
   layers:
   - Default
   - TransparentFX
