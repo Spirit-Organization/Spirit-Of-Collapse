@@ -460,7 +460,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113643777}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a028be27b3c28494592f11a6ae991669, type: 3}
@@ -549,6 +549,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &113643789
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113643777}
+  m_Enabled: 1
 --- !u!1 &225481718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5980,7 +5988,6 @@ GameObject:
   - component: {fileID: 1544512488}
   - component: {fileID: 1544512487}
   - component: {fileID: 1544512489}
-  - component: {fileID: 1544512486}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5988,14 +5995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1544512486
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544512485}
-  m_Enabled: 1
 --- !u!20 &1544512487
 Camera:
   m_ObjectHideFlags: 0
@@ -7046,7 +7045,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 40
   MaxDistance: 200
   Pan2D: 0
   rolloffMode: 0
@@ -7082,7 +7081,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
