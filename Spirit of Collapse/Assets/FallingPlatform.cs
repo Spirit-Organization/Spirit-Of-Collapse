@@ -23,16 +23,20 @@ public class FallingPlatform : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision )
     {
       if (collision.gameObject.tag == "Player")
         {
             rb.isKinematic = false;
         }
+        if (collision.transform.tag == "MovingPlatform")
+        {
+            transform.parent = collision.transform;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bounds" && respawns)
+        if (collision.tag == "DeathBlock" && respawns)
         {
             rb.isKinematic = true;
             rb.velocity = new Vector3(0, 0, 0);
@@ -40,6 +44,7 @@ public class FallingPlatform : MonoBehaviour
         }
 
     }
-
+   
 }
+
  

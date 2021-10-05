@@ -12,6 +12,7 @@ TagManager:
   - DeathBlock
   - Environment
   - Bounds
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
