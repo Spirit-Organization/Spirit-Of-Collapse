@@ -29,10 +29,7 @@ public class FallingPlatform : MonoBehaviour
         {
             rb.isKinematic = false;
         }
-        if (collision.transform.tag == "MovingPlatform")
-        {
-            transform.parent = collision.transform;
-        }
+      
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
