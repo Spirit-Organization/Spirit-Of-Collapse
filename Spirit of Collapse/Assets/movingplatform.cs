@@ -38,4 +38,9 @@ public class movingplatform : MonoBehaviour
             currentPoint = points[pointSelection];
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("Player"))
+            Debug.Log("The almighty Dante enters the battle");
+    }
 }
