@@ -37,6 +37,7 @@ public class ControlsCSharp : MonoBehaviour
     public bool x1scale = true;
     AudioSource audioSrc;
     bool isMoving = false;
+    public GameObject Enemy;
 
     void Start()
     {
