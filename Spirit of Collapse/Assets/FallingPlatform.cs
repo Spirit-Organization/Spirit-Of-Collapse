@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingPlatform : MonoBehaviour
+public class Fallingplatform : MonoBehaviour
 {
 
     public Rigidbody2D rb;
