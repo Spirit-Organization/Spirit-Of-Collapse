@@ -295,11 +295,31 @@ public class ControlsCSharp : MonoBehaviour
         sr.color = new Color(1, 1, 1, 1f);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (col.gameObject.CompareTag("DeathBlock")) 
+        if (other.gameObject.CompareTag("DeathBlock")) 
         {
             Health = 0;
         }
+
+        
+        if(other.transform.tag == "MovingPlatform")
+        {
+            transform.parent = other.transform;
+        }
+        
     }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+   
+        if (other.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
+
+
+    }
+
+
 }
