@@ -397,7 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62006419cbeed4e25afeae17d6f9c3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
 --- !u!61 &26156969
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2347,7 +2346,7 @@ GameObject:
   - component: {fileID: 537631866}
   - component: {fileID: 537631865}
   - component: {fileID: 537631864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mushroom-pad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
