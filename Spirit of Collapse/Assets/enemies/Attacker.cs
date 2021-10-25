@@ -26,7 +26,7 @@ public class Attacker : MonoBehaviour
     void FixedUpdate()
     {
         checkingGround = Physics2D.OverlapCircle(GroundCheckPoint.position, circleRadius, PlatformLayer);
-        checkingGround = Physics2D.OverlapCircle(WallCheckPoint.position, circleRadius, PlatformLayer);
+        checkingWall = Physics2D.OverlapCircle(WallCheckPoint.position, circleRadius, PlatformLayer);
         Patrolling();
     }
 

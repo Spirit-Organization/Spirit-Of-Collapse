@@ -29,5 +29,12 @@ public class FallingPlatform : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        rb.isKinematic = true;
+        rb.velocity = new Vector3(0, 0, 0);
+        transform.position = startPos;
     }
 }
