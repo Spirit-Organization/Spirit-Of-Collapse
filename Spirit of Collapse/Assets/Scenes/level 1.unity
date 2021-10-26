@@ -821,7 +821,11 @@ GameObject:
   - component: {fileID: 128688096}
   - component: {fileID: 128688100}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Carl
+=======
+  m_Name: carl
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +911,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128688095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 787.02, y: -54.38, z: 0}
+=======
+  m_LocalPosition: {x: 778.5, y: -45.5, z: 0}
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 458450100}
@@ -5438,8 +5446,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136870741}
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
+<<<<<<< HEAD
   m_LocalPosition: {x: 340.8817, y: -61.9225, z: 0}
   m_LocalScale: {x: 142.74265, y: 22.983175, z: 1}
+=======
+  m_LocalPosition: {x: 340, y: -59.5, z: 0}
+  m_LocalScale: {x: 142.74265, y: 17.82747, z: 1}
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -5838,12 +5851,20 @@ PrefabInstance:
     - target: {fileID: 4792318659906897985, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -780.1
+=======
+      value: 737.1
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
       objectReference: {fileID: 0}
     - target: {fileID: 4792318659906897985, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: -94.6
+=======
+      value: -57.4
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
       objectReference: {fileID: 0}
     - target: {fileID: 4792318659906897985, guid: 45bf069d5d44aaa4da4a910d9d1a137f,
         type: 3}
@@ -10595,8 +10616,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094852980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -545.7557, y: -143.0318, z: 0}
   m_LocalScale: {x: 395.69757, y: 21.46847, z: 1}
+=======
+  m_LocalPosition: {x: -545.7557, y: -144.5107, z: 0}
+  m_LocalScale: {x: 395.69757, y: 24.426521, z: 1}
+>>>>>>> parent of a1c52837 (Merge branch 'master' of https://github.com/Spirit-Organization/Spirit-Of-Collapse)
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 54
