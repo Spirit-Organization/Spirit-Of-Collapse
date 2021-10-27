@@ -35,6 +35,8 @@ public class ControlsCSharp : MonoBehaviour
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
     public bool x1scale = true;
+    AudioSource audiosrc;
+    bool isMoving = false;
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class ControlsCSharp : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         Attack = Input.GetButtonDown("Fire1");
+        audiosrc = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -80,7 +83,28 @@ public class ControlsCSharp : MonoBehaviour
 
             }//sets movement
 
+            //checks if the player is moving
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
+
+            if (rb.velocity.x != 0)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+
+            //plays audio when player is moving
+            if (isMoving)
+            {
+                if (!audiosrc.isPlaying)
+                    audiosrc.Play();
+            }
+            else
+            {
+                audiosrc.Stop();
+            }
 
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
@@ -221,6 +245,7 @@ public class ControlsCSharp : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, 0f); //sets horizontal velocity to zero
 
+            SoundManageScript.PlaySound ("Jump Clip");
 
             if (DoubleJump == true) //checks if you can double jump
             {
