@@ -7,7 +7,7 @@ public class movingplatform : MonoBehaviour
 
     public GameObject platform;
     public float moveSpeed;
-    public Transform currentpoint;
+    private Transform currentpoint;
     public Transform[] points;
     public int pointSelection;
 
