@@ -13,7 +13,7 @@ public class SoundManageScript : MonoBehaviour
     void Start()
     {
         playerWooshSound = Resources.Load<AudioClip> ("mixkit-arrow-whoosh-1491.wav");
-        playerJumpSound = Resources.Load<AudioClip> ("Jump Clip");
+        playerJumpSound = Resources.Load<AudioClip> ("Jumpwhoosh");
 
         audioSrc = GetComponent<AudioSource> ();
     }
@@ -31,7 +31,7 @@ public class SoundManageScript : MonoBehaviour
             case "mixkit-arrow-whoosh-1491.wav":
                 audioSrc.PlayOneShot (playerWooshSound);
                 break;
-            case "Jump Clip": 
+            case "Jumpwhoosh": 
                 audioSrc.PlayOneShot (playerJumpSound);
                 break;
 
