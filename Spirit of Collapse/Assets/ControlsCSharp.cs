@@ -36,6 +36,8 @@ public class ControlsCSharp : MonoBehaviour
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
     public bool x1scale = true;
+    AudioSource audioSrc;
+    bool isMoving = false;
 
 
     void Start()
@@ -48,6 +50,7 @@ public class ControlsCSharp : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         Attack = Input.GetButtonDown("Fire1");
+        audioSrc = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -83,6 +86,27 @@ public class ControlsCSharp : MonoBehaviour
             }//sets movement
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
+
+            //checks if player is moving
+            if (rb.velocity.x !=0)
+            {
+                isMoving = true;
+            }
+            else 
+            {
+                isMoving = false;
+            }
+
+            //plays audio source attached to player when moving
+            if (isMoving)
+            {
+                if (!audioSrc.isPlaying)
+                audioSrc.Play();
+            }
+            else
+            {
+                audioSrc.Stop();
+            }
 
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
