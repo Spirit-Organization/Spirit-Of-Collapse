@@ -38,6 +38,7 @@ public class ControlsCSharp : MonoBehaviour
     public bool x1scale = true;
     AudioSource audioSrc;
     bool isMoving = false;
+    bool isJumping = false;
 
 
     void Start()
@@ -87,7 +88,7 @@ public class ControlsCSharp : MonoBehaviour
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
-            //checks if player is moving
+            //checks if player is moving horizontally
             if (rb.velocity.x !=0)
             {
                 isMoving = true;
@@ -97,13 +98,29 @@ public class ControlsCSharp : MonoBehaviour
                 isMoving = false;
             }
 
-            //plays audio source attached to player when moving
+            //plays audio source attached to player when moving horizontally
             if (isMoving)
             {
                 if (!audioSrc.isPlaying)
                 audioSrc.Play();
             }
             else
+            {
+                audioSrc.Stop();
+            }
+
+            //checks if player is moving vertically
+            if (rb.velocity.y !=0)
+            {
+                isJumping = true;
+            }
+            else
+            {
+                isJumping = false;
+            }
+
+            //stops playing the audio source attached to the player if moving vertically
+            if (isJumping)
             {
                 audioSrc.Stop();
             }
