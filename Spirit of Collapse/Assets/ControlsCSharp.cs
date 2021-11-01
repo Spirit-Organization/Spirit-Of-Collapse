@@ -247,7 +247,7 @@ public class ControlsCSharp : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, 0f); //sets horizontal velocity to zero
 
-            SoundManageScript.PlaySound("Jumpwhoosh");
+            SoundManageScript.PlaySound("Jumpwhoosh-3");
 
             if (DoubleJump == true) //checks if you can double jump
             {
