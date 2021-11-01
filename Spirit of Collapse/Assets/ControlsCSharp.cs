@@ -114,17 +114,17 @@ public class ControlsCSharp : MonoBehaviour
             {
                 isJumping = true;
             }
-            else
+            else 
             {
                 isJumping = false;
             }
 
-            //stops playing the audio source attached to the player if moving vertically
+            //plays audio source attached to player when moving vertically
             if (isJumping)
             {
                 audioSrc.Stop();
             }
-
+            
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
@@ -264,8 +264,6 @@ public class ControlsCSharp : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, 0f); //sets horizontal velocity to zero
 
-            SoundManageScript.PlaySound("Jumpwhoosh-3");
-
             if (DoubleJump == true) //checks if you can double jump
             {
                 if (JumpAmount == 2) //checks if you have jumped twice, and if so, resets your counter
@@ -277,14 +275,14 @@ public class ControlsCSharp : MonoBehaviour
             {
                 JumpAmount = 0;
             }
-
+            
             rb.AddForce(new Vector2(0f, TrueJump), ForceMode2D.Impulse); //forces player up
             animator.SetBool("Jump", true); //sets jump animation
             animator.SetBool("Fall", false); //reverts fall animation
+            SoundManageScript.PlaySound("Jumpwhoosh-3"); //plays audio when jumping
         }
     }
-
-
+    
     void AttackStart()
     {
         if (AttackCooldown <= 0)
