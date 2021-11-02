@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         m_OrthographicCamera = gameObject.GetComponent<Camera>();
-        player = GameObject.FindWithTag("Player").GetComponent<ControlsCSharp>().Player;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().gameObject;
         scene = SceneManager.GetActiveScene();
     }
 
