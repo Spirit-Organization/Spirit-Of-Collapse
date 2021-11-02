@@ -36,6 +36,9 @@ public class ControlsCSharp : MonoBehaviour
     private SpriteRenderer sr;
     private RaycastHit2D Grounded;
     public bool x1scale = true;
+    AudioSource audioSrc;
+    bool isMoving = false;
+    bool isJumping = false;
 
 
     void Start()
@@ -48,6 +51,7 @@ public class ControlsCSharp : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         Attack = Input.GetButtonDown("Fire1");
+        audioSrc = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -84,6 +88,27 @@ public class ControlsCSharp : MonoBehaviour
 
             if (Health > 0) { rb.velocity = new Vector2(Movement, rb.velocity.y); }//velocity moves object
 
+            //checks if player is moving horizontally
+            if (rb.velocity.x !=0)
+            {
+                isMoving = true;
+            }
+            else 
+            {
+                isMoving = false;
+            }
+
+            //plays audio source attached to player when moving horizontally
+            if (isMoving)
+            {
+                if (!audioSrc.isPlaying)
+                audioSrc.Play();
+            }
+            else
+            {
+                audioSrc.Stop();
+            }
+         
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
@@ -116,6 +141,8 @@ public class ControlsCSharp : MonoBehaviour
                     animator.SetBool("Fall", false);//reverts fall animation
                     animator.SetBool("Jump", true);//sets jump animation
                 }
+
+                audioSrc.Stop();
 
             }
 
@@ -223,7 +250,6 @@ public class ControlsCSharp : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, 0f); //sets horizontal velocity to zero
 
-
             if (DoubleJump == true) //checks if you can double jump
             {
                 if (JumpAmount == 2) //checks if you have jumped twice, and if so, resets your counter
@@ -235,14 +261,14 @@ public class ControlsCSharp : MonoBehaviour
             {
                 JumpAmount = 0;
             }
-
+            
             rb.AddForce(new Vector2(0f, TrueJump), ForceMode2D.Impulse); //forces player up
             animator.SetBool("Jump", true); //sets jump animation
             animator.SetBool("Fall", false); //reverts fall animation
+            SoundManageScript.PlaySound("Jumpwhoosh-3"); //plays audio when jumping
         }
     }
-
-
+    
     void AttackStart()
     {
         if (AttackCooldown <= 0)
@@ -256,6 +282,7 @@ public class ControlsCSharp : MonoBehaviour
 
                 StartCoroutine(Attack1Done());
                 AttackCooldown = 0.5f;
+                SoundManageScript.PlaySound("Swing whoosh"); //plays audio when attacking
             }
         } 
     } 

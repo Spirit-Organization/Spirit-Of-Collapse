@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +30,7 @@ public class Mud : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            controlsCSharp.Speed = speed;
+            controlsCSharp.Speed = speed / 2;
             controlsCSharp.DoubleJump = false;
         }
     }
