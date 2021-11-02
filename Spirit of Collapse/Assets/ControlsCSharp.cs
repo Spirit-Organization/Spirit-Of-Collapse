@@ -108,22 +108,6 @@ public class ControlsCSharp : MonoBehaviour
             {
                 audioSrc.Stop();
             }
-
-            //checks if player is moving vertically
-            if (rb.velocity.y !=0)
-            {
-                isJumping = true;
-            }
-            else 
-            {
-                isJumping = false;
-            }
-
-            //plays audio source attached to player when moving vertically
-            if (isJumping)
-            {
-                audioSrc.Stop();
-            }
             
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
@@ -157,6 +141,8 @@ public class ControlsCSharp : MonoBehaviour
                     animator.SetBool("Fall", false);//reverts fall animation
                     animator.SetBool("Jump", true);//sets jump animation
                 }
+
+                audioSrc.Stop();
 
             }
 
@@ -296,6 +282,7 @@ public class ControlsCSharp : MonoBehaviour
 
                 StartCoroutine(Attack1Done());
                 AttackCooldown = 0.5f;
+                SoundManageScript.PlaySound("Swingwhoosh"); //plays audio when attacking
             }
         } 
     } 
