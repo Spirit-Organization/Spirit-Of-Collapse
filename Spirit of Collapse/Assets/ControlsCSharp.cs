@@ -282,6 +282,7 @@ public class ControlsCSharp : MonoBehaviour
 
                 StartCoroutine(Attack1Done());
                 AttackCooldown = 0.5f;
+                SoundManageScript.PlaySound("Swingwhoosh"); //plays audio when attacking
             }
         } 
     } 
