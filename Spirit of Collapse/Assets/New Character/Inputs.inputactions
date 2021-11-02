@@ -94,7 +94,7 @@
                     "id": "47e53a2e-7c38-433b-9410-af295f8514e6",
                     "path": "2DVector(mode=2)",
                     "interactions": "",
-                    "processors": "StickDeadzone(min=0.125,max=0.925)",
+                    "processors": "NormalizeVector2,StickDeadzone(min=0.125,max=0.925)",
                     "groups": "",
                     "action": "Direction",
                     "isComposite": true,

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8287921593358485575}
   - component: {fileID: 8287921593358485574}
   m_Layer: 0
-  m_Name: New Character Movement
+  m_Name: New Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   jumpSpeed: 8
   cap: {fileID: 8287921593358485576}
   attackSize: 2
-  wallJump: 1
+  wallJump: 0
   minSlopeAngle: 0.1
   maxSlopeAngle: 50
   attackGameObject: {fileID: 8287921593720079921}
@@ -250,6 +250,7 @@ MonoBehaviour:
   attackLengthSeconds: 0.1
   jumpPushOffSpeed: 4
   slideDownWalls: 1
+  canDoubleJump: 1
   directionSmoothTime: 0.02
 --- !u!114 &8287921593358485574
 MonoBehaviour:

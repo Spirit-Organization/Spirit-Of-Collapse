@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public float attackLengthSeconds;
     public float jumpPushOffSpeed;
     public bool slideDownWalls = true;
+    private bool secondJump = false;
+    public bool canDoubleJump = true;
     public bool down { get; private set; } = false;
 
 
@@ -71,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
         directionRoughValue = inputs.actions["Direction"].ReadValue<Vector2>();
         directionSmoothValue = Vector2.SmoothDamp(directionSmoothValue, directionRoughValue, ref directionVelocityCurrent, directionSmoothTime);
-        
+
         SetRays();
     }
 
@@ -134,10 +136,8 @@ public class PlayerMovement : MonoBehaviour
         rayDict.Add("Down", new Rays(){direction = new Vector2(0, -0.5f) * cap.size});
         rayDict.Add("Left", new Rays() { direction = new Vector2(-0.5f, 0) * cap.size });
         rayDict.Add("Right", new Rays() { direction = new Vector2(0.5f, 0) * cap.size});
-        rayDict.Add("Up Right", new Rays() { direction = new Vector2(1, 1) * cap.size / 2 });
-        rayDict.Add("Down Right", new Rays() { direction = new Vector2(1, -1) * cap.size / 2 });
-        rayDict.Add("Up Left", new Rays() { direction = new Vector2(-1, 1) * cap.size / 2 });
-        rayDict.Add("Down Left", new Rays() { direction = new Vector2(-1, -1) * cap.size / 2 });
+        rayDict.Add("Down Right", new Rays() { direction = new Vector2(1.1f, -1) * cap.size / 2 });
+        rayDict.Add("Down Left", new Rays() { direction = new Vector2(-1.1f, -1) * cap.size / 2 });
     }
 
     private void GetAndUseInputs()
@@ -151,15 +151,28 @@ public class PlayerMovement : MonoBehaviour
         //Get Inputs
         if(jumpInput.WasPressedThisFrame() && rayDict["Down"].touching | right | left)//Jump Inputs
         {
+            secondJump = true;
             playerb.velocity = new Vector2(playerb.velocity.x, jumpSpeed);
+            Debug.Log("Jump");
         }
-        else if(jumpInput.WasPressedThisFrame() && rayDict["Right"].touching && wallJump)
+        else if(jumpInput.WasPressedThisFrame() && rayDict["Right"].touching | rayDict["Down Right"].touching && wallJump)
         {
+            secondJump = true;
             playerb.velocity = new Vector2(playerb.velocity.x - jumpPushOffSpeed, jumpSpeed);
         }
-        else if(jumpInput.WasPressedThisFrame() && rayDict["Left"].touching && wallJump)
+        else if(jumpInput.WasPressedThisFrame() && rayDict["Left"].touching | rayDict["Down Left"].touching && wallJump)
         {
+            secondJump = true;
             playerb.velocity = new Vector2(playerb.velocity.x + jumpPushOffSpeed, jumpSpeed);
+        }
+        else if(jumpInput.WasPressedThisFrame() && secondJump && canDoubleJump)
+        {
+            playerb.velocity = new Vector2(playerb.velocity.x, jumpSpeed);
+            secondJump = false;
+        }
+        if(rayDict["Down"].touching && jumpInput.ReadValue<float>() == 0)
+        {
+            secondJump = false;
         }
 
         if (attackBufferRunning == false)//attack inputs
@@ -181,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
                 attackHitBox.size = new Vector2(1, size);
                 attackHitBox.offset = new Vector2(0, attackOffset);
                 StartCoroutine(AttackCooldown());
+                Debug.Log(attackRotation);
             }
         }
 
@@ -192,6 +206,34 @@ public class PlayerMovement : MonoBehaviour
         else if(rayDict["Right"].touching)
         {
             walls = 1;
+        }
+        else if(rayDict["Down"].touching == false && rayDict["Down Right"].touching && right == false)
+        {
+            Vector2 startPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) + cap.offset + Vector2.down;
+            RaycastHit2D wallCast = Physics2D.Linecast(startPos, startPos + Vector2.right * 0.55f);
+            if(wallCast.collider != null)
+            {
+                walls = 1;
+            }
+            else
+            {
+                walls = 0;
+            }
+            Debug.Log("DownRght");
+        }
+        else if (rayDict["Down"].touching == false && rayDict["Down Left"].touching && left == false)
+        {
+            Vector2 startPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) + cap.offset + Vector2.down;
+            RaycastHit2D wallCast = Physics2D.Linecast(startPos, startPos + Vector2.left * 0.55f);
+            if (wallCast.collider != null)
+            {
+                walls = -1;
+            }
+            else
+            {
+                walls = 0;
+            }
+            Debug.Log("DownLft");
         }
         else
         {
