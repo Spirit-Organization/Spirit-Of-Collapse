@@ -108,7 +108,7 @@ public class ControlsCSharp : MonoBehaviour
             {
                 audioSrc.Stop();
             }
-            
+         
             if (SceneManager.GetActiveScene().name == "VillageScene" || x1scale == true)
             {
                 Grounded = Physics2D.CircleCast(transform.position + new Vector3(0, -3, 0), 2.8f, new Vector2(0, -2.8f), 1, 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("Platform"));
@@ -282,7 +282,7 @@ public class ControlsCSharp : MonoBehaviour
 
                 StartCoroutine(Attack1Done());
                 AttackCooldown = 0.5f;
-                SoundManageScript.PlaySound("Swingwhoosh"); //plays audio when attacking
+                SoundManageScript.PlaySound("Swing whoosh"); //plays audio when attacking
             }
         } 
     } 

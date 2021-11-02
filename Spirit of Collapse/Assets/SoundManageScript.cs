@@ -12,7 +12,7 @@ public class SoundManageScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerWooshSound = Resources.Load<AudioClip> ("Swingwhoosh");
+        playerWooshSound = Resources.Load<AudioClip> ("Swing whoosh");
         playerJumpSound = Resources.Load<AudioClip> ("Jumpwhoosh-3");
 
         audioSrc = GetComponent<AudioSource> ();
@@ -28,11 +28,11 @@ public class SoundManageScript : MonoBehaviour
     {
         switch (clip)
         {
-            case "Swinghwhoosh":
-                audioSrc.PlayOneShot (playerWooshSound);
+            case "Swing whoosh":
+                audioSrc.PlayOneShot (playerWooshSound, 0.1f);
                 break;
             case "Jumpwhoosh-3": 
-                audioSrc.PlayOneShot (playerJumpSound);
+                audioSrc.PlayOneShot (playerJumpSound, 0.1f);
                 break;
 
         }
