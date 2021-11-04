@@ -8,6 +8,7 @@ public class SoundManageScript : MonoBehaviour
     public static AudioClip playerWooshSound, playerHitSound, playerJumpSound;  
     static AudioSource audioSrc; 
     private Animator animations;
+    bool isMoving = false;
  
 
     // Start is called before the first frame update
@@ -22,10 +23,14 @@ public class SoundManageScript : MonoBehaviour
     // Update is called once per frame
     void Update()//animations.GetInteger("Animation To Play")
     {  
-        if (animations.GetInteger("Animation To Play", 2));
+        if (animations.GetInteger("Animation To Play")== 2)
         {
-            
+            isMoving = true;
         } 
+        else 
+        {
+            isMoving = false;
+        }
     }
 
     public static void PlaySound (string clip)
