@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManageScript : MonoBehaviour
 {
 
-    public static AudioClip playerWooshSound, playerHitSound, playerJumpSound;  
+    public static AudioClip playerWooshSound, playerHitSound, playerJumpSound, playerWalkSound;
     static AudioSource audioSrc; 
     private Animator animations;
     bool isMoving = false;
@@ -16,6 +16,7 @@ public class SoundManageScript : MonoBehaviour
     {
         playerWooshSound = Resources.Load<AudioClip> ("Swing whoosh");
         playerJumpSound = Resources.Load<AudioClip> ("Jumpwhoosh-3");
+        playerWalkSound = Resources.Load<AudioClip> ("walking-1");
         audioSrc = GetComponent<AudioSource> ();
         animations = gameObject.transform.Find("Animator").gameObject.GetComponent<Animator>();
     }
