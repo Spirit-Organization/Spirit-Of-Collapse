@@ -251,6 +251,7 @@ MonoBehaviour:
   jumpPushOffSpeed: 4
   slideDownWalls: 1
   canDoubleJump: 1
+  health: 5
   directionSmoothTime: 0.02
 --- !u!114 &8287921593358485574
 MonoBehaviour:
@@ -264,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4534e752003da44fab589c08608f6bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSpeed: 0
+  canAnimJump: 0
 --- !u!1 &8287921593170426933
 GameObject:
   m_ObjectHideFlags: 0

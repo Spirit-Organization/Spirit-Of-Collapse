@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool wallJump = true;
     private float rightAngle;
     private float leftAngle;
-    private bool jumping = false;
+    public bool jumping { get; private set; } = false;
     public bool right { get; private set; } = false;
     public bool left { get; private set; } = false;
     private bool attackBufferRunning = false;
@@ -33,16 +33,18 @@ public class PlayerMovement : MonoBehaviour
     public float attackLengthSeconds;
     public float jumpPushOffSpeed;
     public bool slideDownWalls = true;
-    private bool secondJump = false;
+    public bool secondJump { get; private set; } = false;
     public bool canDoubleJump = true;
     public bool down { get; private set; } = false;
+    public int health = 5;
+    private PlayerAnimator playerAnimator;
 
 
     //Input Values
     private InputAction attack;
     private InputAction jumpInput;
     private PlayerInput inputs;
-    private int walls = 0;
+    public int walls { get; private set; } = 0;
     
     //Directional Values
     private Vector2 directionRoughValue;
@@ -73,23 +75,28 @@ public class PlayerMovement : MonoBehaviour
     {
         directionRoughValue = inputs.actions["Direction"].ReadValue<Vector2>();
         directionSmoothValue = Vector2.SmoothDamp(directionSmoothValue, directionRoughValue, ref directionVelocityCurrent, directionSmoothTime);
-
-        SetRays();
+        if (health > 0)
+        {
+            SetRays();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (walls == 0)
+        if (health > 0)
         {
-           playerb.velocity = new Vector2 (directionSmoothValue.x * maxSpeed, playerb.velocity.y); 
-        }
-        else if(walls == 1 && directionSmoothValue.x < 0 | slideDownWalls == false)
-        {
-            playerb.velocity = new Vector2(directionSmoothValue.x * maxSpeed, playerb.velocity.y);
-        }
-        else if(walls == -1 && directionSmoothValue.x > 0 | slideDownWalls == false)
-        {
-            playerb.velocity = new Vector2(directionSmoothValue.x * maxSpeed, playerb.velocity.y);
+            if (walls == 0)
+            {
+                playerb.velocity = new Vector2(directionSmoothValue.x * maxSpeed, playerb.velocity.y);
+            }
+            else if (walls == 1 && directionSmoothValue.x < 0 | slideDownWalls == false)
+            {
+                playerb.velocity = new Vector2(directionSmoothValue.x * maxSpeed, playerb.velocity.y);
+            }
+            else if (walls == -1 && directionSmoothValue.x > 0 | slideDownWalls == false)
+            {
+                playerb.velocity = new Vector2(directionSmoothValue.x * maxSpeed, playerb.velocity.y);
+            }
         }
     }
 
@@ -131,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         jumpInput = inputs.actions["Jump"];
         attack = inputs.actions["Attack"];
         Physics2D.queriesStartInColliders = false;
+        playerAnimator = gameObject.GetComponent<PlayerAnimator>();
 
         rayDict.Add("Up", new Rays(){direction = new Vector2(0,0.5f) * cap.size});
         rayDict.Add("Down", new Rays(){direction = new Vector2(0, -0.5f) * cap.size});
@@ -153,7 +161,6 @@ public class PlayerMovement : MonoBehaviour
         {
             secondJump = true;
             playerb.velocity = new Vector2(playerb.velocity.x, jumpSpeed);
-            Debug.Log("Jump");
         }
         else if(jumpInput.WasPressedThisFrame() && rayDict["Right"].touching | rayDict["Down Right"].touching && wallJump)
         {
@@ -179,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (attack.WasPressedThisFrame())
             {
+                playerAnimator.attack = true;
                 attackGameObject.SetActive(true);
                 Vector2 origin = cap.offset + (Vector2)gameObject.transform.position;
                 RaycastHit2D attackCast = Physics2D.Linecast(origin, origin + directionRoughValue * attackSize);
@@ -194,7 +202,6 @@ public class PlayerMovement : MonoBehaviour
                 attackHitBox.size = new Vector2(1, size);
                 attackHitBox.offset = new Vector2(0, attackOffset);
                 StartCoroutine(AttackCooldown());
-                Debug.Log(attackRotation);
             }
         }
 
@@ -219,7 +226,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 walls = 0;
             }
-            Debug.Log("DownRght");
         }
         else if (rayDict["Down"].touching == false && rayDict["Down Left"].touching && left == false)
         {
@@ -233,7 +239,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 walls = 0;
             }
-            Debug.Log("DownLft");
         }
         else
         {
@@ -338,6 +343,7 @@ public class PlayerMovement : MonoBehaviour
         attackHitBox.offset = Vector2.zero;
         attackHitBox.size = Vector2.right * 2;
         attackGameObject.SetActive(false);
+        playerAnimator.attack = false;
         yield return new WaitForSeconds(attackCooldownSeconds);
         attackBufferRunning = false;
     }

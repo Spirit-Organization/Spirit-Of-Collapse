@@ -7,16 +7,17 @@ public class PlayerAnimator : MonoBehaviour
 {
     private Dictionary<string, Rays> dictionary;
     private PlayerMovement playerMovement;
-    public string animationToPlay { get; private set; }
-    public float playSpeed;
+    public float playSpeed { get; private set; }
     private SpriteRenderer animator;
     private Rigidbody2D player;
     private PlayerInput input;
-    private Dictionary<string, int> animationDict = new Dictionary<string, int>()
-    {
-        {"Idle", 1},{"Walk", 2},{"Wall Walk", 3},{"Wall Slide", 4},{"Wall Jump", 5},{"Jump", 6},{"Fall", 7},{"Slope Idle", 8}, {"Slope Walk", 9}, {"Slope Walk Down", 9}
-    };
     private Animator animations;
+    private bool jumpHelper;
+    public bool canAnimJump;
+    [System.NonSerialized]
+    public bool attack;
+    private bool forcefall = false;
+    // 1 = idle, 2 = walk, 3 = jump, 4 = fall, 5 = second jump, 6 = death, 7 = wall slide, 8 = stagger, 9 = attack
 
     void Awake()
     {
@@ -25,13 +26,26 @@ public class PlayerAnimator : MonoBehaviour
         animations = gameObject.transform.Find("Animator").gameObject.GetComponent<Animator>();
         player = gameObject.GetComponent<Rigidbody2D>();
         input = gameObject.GetComponent<PlayerInput>();
-        StartCoroutine(AnimationUpdate());
+        dictionary = playerMovement.rayDict;
+        attack = false;
     }
 
-    IEnumerator AnimationUpdate()//Updates 20 times per Second
+    void LateUpdate()
     {
         Vector2 direction = input.actions["Direction"].ReadValue<Vector2>();
-        dictionary = playerMovement.rayDict;
+        float jump = input.actions["Jump"].ReadValue<float>();
+        bool corner = false;
+        if(playerMovement.right || playerMovement.left || playerMovement.down)
+        {
+            corner = true;
+        }
+
+        if(playerMovement.canDoubleJump && playerMovement.secondJump == false && canAnimJump)
+        {
+            StartCoroutine(DoubleBuff());
+        }
+        canAnimJump = playerMovement.secondJump;
+
         if (direction.x < 0)
         {
             animator.flipX = false;
@@ -41,58 +55,50 @@ public class PlayerAnimator : MonoBehaviour
             animator.flipX = true;
         }
 
-        if(player.velocity.y > 0)
+        if (playerMovement.health < 0)
         {
-            if(playerMovement.right || playerMovement.left)
-            {
-                animationToPlay = "Slope Walk";
-            }
-            else if(dictionary["Left"].touching || dictionary["Right"].touching)
-            {
-                animationToPlay = "Wall Jump";
-            }
-            else
-            {
-                animationToPlay = "Jump";
-            }
+            animations.SetInteger("Animation To Play", 6);
         }
-        else if(player.velocity.y < 0)
+        else if(attack)
         {
-            if(playerMovement.right || playerMovement.left)
-            {
-                animationToPlay = "Slope Walk Down";
-            }
-            else if(playerMovement.down)
-            {
-                animationToPlay = "Walk";
-            }
-            else if(dictionary["Left"].touching || dictionary["Right"].touching)
-            {
-                animationToPlay = "Wall Slide";
-            }
-            else
-            {
-                animationToPlay = "Fall";
-            }
+            animations.SetInteger("Animation To Play", 9);
+            animations.SetFloat("Attack Speed", 2.4f / playerMovement.attackLengthSeconds);
+            forcefall = true;
         }
-        else if(direction.x == 0)
+        else if(jump > 0 && dictionary["Down"].touching | corner)
         {
-            animationToPlay = "Idle";
+            animations.SetInteger("Animation To Play", 3);
         }
-        else
+        else if (direction.x != 0 && player.velocity.y == 0 | corner)
         {
-            if (dictionary["Left"].touching || dictionary["Right"].touching)
-            {
-                animationToPlay = "Wall Walk";
-            }
-            else
-            {
-                animationToPlay = "Walk";
-            }
+            animations.SetInteger("Animation To Play", 2);
         }
+        else if(jump > 0 && jumpHelper)
+        {
+            animations.SetInteger("Animation To Play", 5);
+        }
+        else if(player.velocity.y < 0 || forcefall)
+        {
+            animations.SetInteger("Animation To Play", 4);
+            forcefall = false;
+            
+        }
+        else if(direction.x == 0 && player.velocity.y == 0)
+        {
+            animations.SetInteger("Animation To Play", 1);
+        }
+        else if (playerMovement.health < 1)
+        {
+            animations.SetInteger("Animation To Play", 8);
+        }
+    }
 
-        animations.SetInteger("Animation To Play", animationDict[animationToPlay]);
-        yield return new WaitForSeconds(0.05f);
-        StartCoroutine(AnimationUpdate());
+    IEnumerator DoubleBuff()
+    {
+        jumpHelper = true;
+
+        yield return new WaitForEndOfFrame();
+
+        jumpHelper = false;
     }
 }
