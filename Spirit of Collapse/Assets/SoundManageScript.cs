@@ -16,13 +16,16 @@ public class SoundManageScript : MonoBehaviour
         playerWooshSound = Resources.Load<AudioClip> ("Swing whoosh");
         playerJumpSound = Resources.Load<AudioClip> ("Jumpwhoosh-3");
         audioSrc = GetComponent<AudioSource> ();
-        animations = gameObject.transform.find("Animator").gameObject.GetComponent<Animator>();
+        animations = gameObject.transform.Find("Animator").gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()//animations.GetInteger("Animation To Play")
     {  
-        
+        if (animations.GetInteger("Animation To Play", 2));
+        {
+            
+        } 
     }
 
     public static void PlaySound (string clip)
