@@ -38,7 +38,7 @@ public class ControlsCSharp : MonoBehaviour
     public bool x1scale = true;
     AudioSource audioSrc;
     bool isMoving = false;
-    bool isJumping = false;
+
 
 
     void Start()

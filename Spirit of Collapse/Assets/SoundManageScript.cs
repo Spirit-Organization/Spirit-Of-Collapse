@@ -7,20 +7,21 @@ public class SoundManageScript : MonoBehaviour
 
     public static AudioClip playerWooshSound, playerHitSound, playerJumpSound;  
     static AudioSource audioSrc; 
-
+    private Animator animations;
+ 
 
     // Start is called before the first frame update
     void Start()
     {
         playerWooshSound = Resources.Load<AudioClip> ("Swing whoosh");
         playerJumpSound = Resources.Load<AudioClip> ("Jumpwhoosh-3");
-
         audioSrc = GetComponent<AudioSource> ();
+        animations = gameObject.transform.find("Animator").gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update()//animations.GetInteger("Animation To Play")
+    {  
         
     }
 
