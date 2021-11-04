@@ -8,7 +8,7 @@ public class FallingPlatform : MonoBehaviour
     private Rigidbody2D rb;
     Vector2 startPos;
 
-    public bool respawns = true;
+    private bool respawns = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +23,25 @@ public class FallingPlatform : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision) // Checks for player when detected platform will fall
     {
         if (collision.gameObject.tag == "Player")
         {
             rb.isKinematic = false;
         }
 
+        if(collision.transform.tag == "LillyPad")
+        {
+            transform.parent = collision.transform;
+        }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        rb.isKinematic = true;
-        rb.velocity = new Vector3(0, 0, 0);
-        transform.position = startPos;
+        if (collision.transform.tag == "LillyPad")
+        {
+           transform.parent = null;
+        }
     }
 }
+
