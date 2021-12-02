@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mud : MonoBehaviour
 {
-    ControlsCSharp controlsCSharp;
+    ControlsCSharp CCS;
     public float TrueJump;
     public int speed;
 
@@ -20,7 +20,7 @@ public class Mud : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            controlsCSharp.DoubleJump = true;
+            CCS.DoubleJump = true;
         }
     }
 
@@ -30,8 +30,8 @@ public class Mud : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            controlsCSharp.Speed = speed / 2;
-            controlsCSharp.DoubleJump = false;
+            CCS.Speed = speed / 2;
+            CCS.DoubleJump = false;
         }
     }
 
